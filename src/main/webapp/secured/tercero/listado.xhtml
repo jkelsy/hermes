@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <p:commandButton action="#{terceroController.crear}" value="Nuevo" />
+                    <p:dataTable var="terceroInstance" value="#{terceroController.terceros}">
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="TI" />
+                        </f:facet>
+                        <h:outputText value="#{terceroInstance.tipoIdentificacion.abreviatura}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Identificacion" />
+                        </f:facet>
+                        <h:outputText value="#{terceroInstance.identificacion}" />
+                    </p:column>            
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nombres" />
+                        </f:facet>
+                        <h:outputText value="#{terceroInstance.nombres}" />
+                    </p:column>            
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Apellido1" />
+                        </f:facet>
+                        <h:outputText value="#{terceroInstance.apellido1}" />
+                    </p:column>            
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Apellido2" />
+                        </f:facet>
+                        <h:outputText value="#{terceroInstance.apellido2}" />
+                    </p:column>            
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Direccion" />
+                        </f:facet>
+                        <h:outputText value="#{terceroInstance.direccion}" />
+                    </p:column>            
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Telefono" />
+                        </f:facet>
+                        <h:outputText value="#{terceroInstance.telefono}" />
+                    </p:column>            
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Email" />
+                        </f:facet>
+                        <h:outputText value="#{terceroInstance.email}" />
+                    </p:column>            
+                        
+                        
+                        
+                        <p:column>
+                        <h:panelGroup class="action" >
+                            
+                            
+                            <h:commandLink action="#{terceroController.editar(terceroInstance)}" value="Editar"/>
+                            
+                            
+			</h:panelGroup>
+                       
+                    </p:column>            
+                        
+                </p:dataTable>
+              </h:form>    
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

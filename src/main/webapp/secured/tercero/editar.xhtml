@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../plantilla.xhtml">
+
+            <ui:define name="content">
+                
+                 <h3>Editar</h3>
+                
+                <h:form>
+                    <p:messages id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="false" showDetail="true"/>
+                    <h:panelGrid columns="2">
+                        
+                          <p:outputLabel for="txtTipoIdentificacion" value="Tipo Identificacion"></p:outputLabel>
+                        <p:selectOneMenu  id="txtTipoIdentificacion" value="#{terceroController.tipoIndetificacionId }">
+                            <f:selectItems value="#{tipoIdentificacionController.tipoIdentificaciones}" var="tpInstance"
+                                           itemLabel="#{tpInstance.abreviatura}" itemValue="#{tpInstance.id}"
+                                           />
+                        </p:selectOneMenu>
+
+                        <p:outputLabel for="txtIdentificacion" value="Identificacion"></p:outputLabel>
+                        <p:inputText id="txtIdentificacion" value="#{terceroController.seleccionado.identificacion}"></p:inputText>
+
+                        <p:outputLabel for="txtNombres" value="Nombres"></p:outputLabel>
+                        <p:inputText id="txtNombres" value="#{terceroController.seleccionado.nombres}"></p:inputText>
+
+                        <p:outputLabel for="txtApellido1" value="Apellido1"></p:outputLabel>
+                        <p:inputText id="txtApellido1" value="#{terceroController.seleccionado.apellido1}"></p:inputText>
+
+                        <p:outputLabel for="txtApellido2" value="Apellido2"></p:outputLabel>
+                        <p:inputText id="txtApellido2" value="#{terceroController.seleccionado.apellido2}"></p:inputText>
+
+                        <p:outputLabel for="txtDireccion" value="Direccion"></p:outputLabel>
+                        <p:inputText id="txtDireccion" value="#{terceroController.seleccionado.direccion}"></p:inputText>
+
+                        <p:outputLabel for="txtTelefono" value="Telefono"></p:outputLabel>
+                        <p:inputText id="txtTelefono" value="#{terceroController.seleccionado.telefono}"></p:inputText>
+
+                        <p:outputLabel for="txtEmail" value="Email"></p:outputLabel>
+                        <p:inputText id="txtEmail" value="#{terceroController.seleccionado.email}"></p:inputText>
+
+                        <p:column/>
+                        <p:commandButton icon="ui-icon-check" value="Actualizar" actionListener="#{terceroController.actualizar}"
+                                         update="mensaje" action="editar"
+                                         />
+                         
+                    </h:panelGrid>
+                </h:form>    
+                 </ui:define>
+        </ui:composition>     
+    </body>
+</html>

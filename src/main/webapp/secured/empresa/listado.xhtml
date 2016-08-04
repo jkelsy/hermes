@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="/plantilla.xhtml">
+            <ui:define name="contentHeader">
+                
+                <h1>
+                    <small>Empresas</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                    <li class="active">Here</li>
+                </ol>
+            </ui:define>
+            <ui:define name="content">
+                <h:form>
+                    <p:commandButton action="#{empresaController.crear}" value="Nuevo" />
+                    <p:dataTable var="emp" value="#{empresaController.empresas}">
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nit" />
+                            </f:facet>
+                            <h:outputText value="#{emp.nit}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nombre" />
+                            </f:facet>
+                            <h:outputText value="#{emp.nombre}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Representante" />
+                            </f:facet>
+                            <h:outputText value="#{emp.representante.apellido1}, #{emp.representante.nombres}" />
+                        </p:column>                        
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Direccion" />
+                            </f:facet>
+                            <h:outputText value="#{emp.direccion}" />
+                        </p:column>            
+                        <p:column>
+                            <h:panelGroup class="action" >
+                                <h:commandLink action="#{empresaController.mostrar(emp)}" value="Mostrar"/>
+
+                                <h:commandLink action="#{empresaController.editar(emp)}" value="Editar"/>
+                                <br></br>
+
+
+
+
+                            </h:panelGroup>
+
+                        </p:column>            
+
+                    </p:dataTable>
+                </h:form>    
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
