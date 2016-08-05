@@ -19,7 +19,14 @@ import com.sgd.hermes.model.Empresa;
 import com.sgd.hermes.model.Municipio;
 import com.sgd.hermes.model.Poblado;
 import com.sgd.hermes.model.Tercero;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -27,11 +34,10 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.inject.Inject;
 
-
 @Named(value = "empresaController")
 @SessionScoped
 public class EmpresaController implements Serializable {
-    
+
     @Inject
     private EmpresaFacade empresaFacade;
 
@@ -46,49 +52,51 @@ public class EmpresaController implements Serializable {
 
     @Inject
     private PobladoFacade pobladoFacade;
-    
+
     @Inject
     private CargoFacade cargoFacade;
-    
+
     @Inject
     private DependenciaFacade dependenciaFacade;
 
     private Empresa seleccionado = new Empresa();
-     
+
     private Long representanteId;
-    
+
     private Long departamentoId;
 
     private Long municipioId;
-    
+
     private Long pobladoId;
 
     private Long jefeId;
 
     private List<Departamento> departamentoList;
-    
+
     private List<Tercero> representanteList;
-    
+
     private List<Municipio> municipioList;
-    
+
     private List<Poblado> pobladoList;
-    
+
     private List<Cargo> cargoList;
-    
+
     private List<Dependencia> dependenciaList;
-    
+
     private List<Tercero> jefeList;
-    
+
     private Cargo cargoInstance;
-    
+
     private Dependencia dependenciaInstance;
-    
+
     private String accion;
+
+    private BufferedReader reader;
 
     public EmpresaController() {
     }
 
-  public List<Empresa> getEmpresas(){
+    public List<Empresa> getEmpresas() {
         return empresaFacade.findAll();
     }
 
@@ -220,104 +228,95 @@ public class EmpresaController implements Serializable {
         this.jefeList = jefeList;
     }
 
-    
-    
-    
-    public String editar(Empresa c){
+    public String editar(Empresa c) {
         departamentoList = departamentoFacade.findAll();
         representanteList = terceroFacade.findAll();
-        
+
         this.seleccionado = c;
-        
-        if (this.seleccionado.getRepresentante()!=null) {
+
+        if (this.seleccionado.getRepresentante() != null) {
             this.representanteId = this.seleccionado.getRepresentante().getId();
             this.departamentoId = this.seleccionado.getPoblado().getMunicipio().getDepartamento().getId();
             try {
                 buscarMunicipio();
             } catch (Exception e) {
             }
-            
+
             this.municipioId = this.seleccionado.getPoblado().getMunicipio().getId();
             try {
                 buscarPoblado();
             } catch (Exception e) {
             }
-            
+
         }
-        
-        
+
         return "editar";
     }
-    
-    public String crear(){
+
+    public String crear() {
         representanteList = terceroFacade.findAll();
         departamentoList = departamentoFacade.findAll();
 
         this.seleccionado = new Empresa();
         return "crear";
     }
-    
-    
-    
-    
-    public String actualizar(){
-         try {
-             seleccionado.setPoblado(pobladoFacade.find(pobladoId));
-             seleccionado.setRepresentante(terceroFacade.find(representanteId));
+
+    public String actualizar() {
+        try {
+            seleccionado.setPoblado(pobladoFacade.find(pobladoId));
+            seleccionado.setRepresentante(terceroFacade.find(representanteId));
             empresaFacade.edit(seleccionado);
             // MENSAJE
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Actualizado!"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Actualizado!"));
         } catch (Exception e) {
             // MENSAJE
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso","Error"));
-        }finally{
-             FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
-         }
-         
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
+        } finally {
+            FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        }
+
         return "editar";
     }
-    
-    public String grabar(){
-         try {
-             seleccionado.setPoblado(pobladoFacade.find(pobladoId));
-             seleccionado.setRepresentante(terceroFacade.find(representanteId));
+
+    public String grabar() {
+        try {
+            seleccionado.setPoblado(pobladoFacade.find(pobladoId));
+            seleccionado.setRepresentante(terceroFacade.find(representanteId));
             empresaFacade.create(seleccionado);
             // MENSAJE
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Creado!"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Creado!"));
         } catch (Exception e) {
             // MENSAJE
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso","Error"));
-        }finally{
-             FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
-         }
-         
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
+        } finally {
+            FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        }
+
         setSeleccionado(seleccionado);
         return "editar";
     }
-  
-    
-    public String listado(){
+
+    public String listado() {
         return "/secured/empresa/listado";
     }
-    
-    
+
     public void buscarMunicipio() throws Exception {
         try {
             municipioId = null;
             pobladoId = null;
             municipioList = municipioFacade.buscarMunicipio(departamentoId);
-            
-            if (municipioList != null){
+
+            if (municipioList != null) {
                 municipioId = municipioList.get(0).getId();
                 pobladoList = null;
                 buscarPoblado();
 
             }
-            
-            if (pobladoList != null){
+
+            if (pobladoList != null) {
                 pobladoId = pobladoList.get(0).getId();
             }
-            
+
         } catch (Exception e) {
             throw e;
         }
@@ -327,130 +326,157 @@ public class EmpresaController implements Serializable {
     public void buscarPoblado() throws Exception {
         try {
             pobladoList = pobladoFacade.buscarPoblado(municipioId);
-            if (pobladoList != null){
+            if (pobladoList != null) {
                 pobladoId = pobladoList.get(0).getId();
             }
-            
+
         } catch (Exception e) {
             throw e;
         }
 
     }
 
-    public String mostrar(Empresa emp) throws Exception{
+    public String mostrar(Empresa emp) throws Exception {
         this.seleccionado = emp;
-        
+
         try {
             cargoList = empresaFacade.buscarCargos(this.seleccionado.getId());
             dependenciaList = empresaFacade.buscarDependencias(this.seleccionado.getId());
         } catch (Exception e) {
             throw e;
         }
-        
-        
+
         return "mostrar";
-        
+
     }
-    
-    public void registraCargo() throws Exception{
-        
+
+    public void registraCargo() throws Exception {
+
         try {
             cargoInstance.setEmpresa(seleccionado);
-            
-            if (accion.equals("Grabar")){
-               cargoFacade.create(cargoInstance); 
-            }else{
-                if (accion.equals("Actualizar")){
-                    cargoFacade.edit(cargoInstance); 
-                }
+
+            if (accion.equals("Grabar")) {
+                cargoFacade.create(cargoInstance);
+            } else if (accion.equals("Actualizar")) {
+                cargoFacade.edit(cargoInstance);
             }
-            
+
         } catch (Exception e) {
             throw e;
-        }finally{
-           cargoList = empresaFacade.buscarCargos(seleccionado.getId());
+        } finally {
+            cargoList = empresaFacade.buscarCargos(seleccionado.getId());
         }
-        
-    }
-    
 
-    public void crearCargo(){
+    }
+
+    public void crearCargo() {
         this.accion = "Grabar";
         this.cargoInstance = new Cargo();
     }
 
-    
-    public void seleccionarCargo(Cargo car){
+    public void seleccionarCargo(Cargo car) {
         this.accion = "Actualizar";
         this.cargoInstance = car;
     }
-    
-    
-    public void eliminarCargo(){
-         try {
+
+    public void eliminarCargo() {
+        try {
             cargoFacade.remove(cargoInstance);
             cargoList = empresaFacade.buscarCargos(this.seleccionado.getId());
-            
+
         } catch (Exception e) {
-            
-        }finally{
-           
+
+        } finally {
+
         }
     }
-    
-    
-    
-    public void crearDependencia(){
+
+    public void crearDependencia() {
         this.accion = "Grabar";
         this.dependenciaInstance = new Dependencia();
         this.jefeList = terceroFacade.findAll();
     }
-    
-    public void seleccionarDependencia(Dependencia depen){
+
+    public void seleccionarDependencia(Dependencia depen) {
         this.accion = "Actualizar";
         this.dependenciaInstance = depen;
-        if (this.dependenciaInstance.getJefe() !=null){
+        if (this.dependenciaInstance.getJefe() != null) {
             this.jefeId = this.dependenciaInstance.getJefe().getId();
         }
         this.jefeList = terceroFacade.findAll();
-    } 
-    
-    
-    public void registraDependencia() throws Exception{
-        
+    }
+
+    public void registraDependencia() throws Exception {
+
         try {
             dependenciaInstance.setEmpresa(seleccionado);
             dependenciaInstance.setJefe(terceroFacade.find(jefeId));
-            
-            if (accion.equals("Grabar")){
-               dependenciaFacade.create(dependenciaInstance); 
-            }else{
-                if (accion.equals("Actualizar")){
-                    dependenciaFacade.edit(dependenciaInstance); 
-                }
+
+            if (accion.equals("Grabar")) {
+                dependenciaFacade.create(dependenciaInstance);
+            } else if (accion.equals("Actualizar")) {
+                dependenciaFacade.edit(dependenciaInstance);
             }
-            
+
         } catch (Exception e) {
             throw e;
-        }finally{
-           dependenciaList = empresaFacade.buscarDependencias(seleccionado.getId());
+        } finally {
+            dependenciaList = empresaFacade.buscarDependencias(seleccionado.getId());
         }
-        
-    } 
-    
-     public void eliminarDependencia(){
-         
-         
-         try {
+
+    }
+
+    public void eliminarDependencia() {
+
+        try {
             dependenciaFacade.remove(dependenciaInstance);
             this.jefeId = null;
             dependenciaList = empresaFacade.buscarDependencias(seleccionado.getId());
-            
+
         } catch (Exception e) {
-             System.err.println("Error"+e);
-        }finally{
-           
+            System.err.println("Error" + e);
+        } finally {
+
         }
     }
-    
+
+    public void cargarDepartamento() {
+        System.out.println("Cargando");
+
+        System.out.println("Cargandolllololo");
+
+        String csvFile =  "/home/jdmp/programacion/hermes/src/main/webapp/departamento.csv";
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = ",";
+
+        try {
+
+            br = reader;//new BufferedReader(new FileReader(csvFile));
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+                String[] departamento = line.split(cvsSplitBy);
+
+                System.out.println("Departamento [codigo= " + departamento[0] + " , nombre=" + departamento[1] + "]");
+
+            }
+
+        } catch (FileNotFoundException e) {
+            System.err.println("Error" + e);
+
+        } catch (IOException e) {
+            System.err.println("Error" + e);
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    System.err.println("Error" + e);
+                }
+            }
+        }
+
+    }
+
 }
