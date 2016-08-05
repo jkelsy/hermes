@@ -13,6 +13,10 @@ import com.sgd.hermes.model.Cargo;
 import com.sgd.hermes.model.Permiso;
 import com.sgd.hermes.model.Rol;
 import com.sgd.hermes.model.Usuario;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -38,8 +42,10 @@ public class Inicio {
     @Inject
     private PermisoFacade permisoFacade;
 
+    private BufferedReader reader;
+
     @PostConstruct
-    public void iniciar() throws Exception {
+    public void iniciar() {
 
         Cargo cargo;
 
@@ -66,7 +72,7 @@ public class Inicio {
             usuarioFacade.create(usuario);
         }
 
-        Permiso permiso = permisoFacade.findByUsuarioAndRol(usuario,rol);
+        Permiso permiso = permisoFacade.findByUsuarioAndRol(usuario, rol);
 
         if (permiso == null) {
             permiso = new Permiso();
@@ -75,6 +81,54 @@ public class Inicio {
             permisoFacade.create(permiso);
         }
 
+        System.out.println("ajshkjashkj");
+
+    }
+
+    public void cargarDepartamento() {
+        reader = new BufferedReader(
+                new InputStreamReader(
+                        this
+                        .getClass()
+                        .getClassLoader()
+                        .getResourceAsStream("/META-INF/departamento.csv")
+                )
+        );
+
+        
+        //String csvFile =  path.toString();//  "/resources/departamento.csv";
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = ",";
+
+        try {
+
+            br = reader;//new BufferedReader(new FileReader(csvFile));
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+                String[] departamento = line.split(cvsSplitBy);
+
+                System.out.println("Departamento [codigo= " + departamento[0] + " , nombre=" + departamento[1] + "]");
+
+            }
+
+        } catch (FileNotFoundException e) {
+            System.err.println("Error" + e);
+
+        } catch (IOException e) {
+            System.err.println("Error" + e);
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    System.err.println("Error" + e);
+                }
+            }
+        }
+        
+        
     }
 
 }
