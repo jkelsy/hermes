@@ -2,24 +2,28 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="HermesPU" transaction-type="JTA">
     <jta-data-source>java:/jboss/datasources/HermesDS</jta-data-source>
-    <class>com.sgd.hermes.model.Empresa</class>
-    <class>com.sgd.hermes.model.Usuario</class>
-    <class>com.sgd.hermes.model.Tercero</class>
-    <class>com.sgd.hermes.model.Poblado</class>
-    <class>com.sgd.hermes.model.Municipio</class>
     <class>com.sgd.hermes.model.Departamento</class>
-    <class>com.sgd.hermes.model.TipoIdentificacion</class>
-    <class>com.sgd.hermes.model.Dependencia</class>
-    <class>com.sgd.hermes.model.Cargo</class>
-    <class>com.sgd.hermes.model.Rol</class>
     <class>com.sgd.hermes.model.Usuario</class>
+    <class>com.sgd.hermes.model.Poblado</class>
     <class>com.sgd.hermes.model.Permiso</class>
+    <class>com.sgd.hermes.model.Tercero</class>
+    <class>com.sgd.hermes.model.Cargo</class>
+    <class>com.sgd.hermes.model.Empresa</class>
+    <class>com.sgd.hermes.model.Municipio</class>
+    <class>com.sgd.hermes.model.Rol</class>
+    <class>com.sgd.hermes.model.Dependencia</class>
+    <class>com.sgd.hermes.model.TipoIdentificacion</class>
+    <class>com.sgd.hermes.model.TipoPreservacion</class>
+    <class>com.sgd.hermes.model.TipoArmario</class>
+    <class>com.sgd.hermes.model.TablaRetencionDocumental</class>
+    <class>com.sgd.hermes.model.ArchivoCentral</class>
+    <class>com.sgd.hermes.model.Serie</class>
+    <class>com.sgd.hermes.model.SubSerie</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
     </properties>
-  </persistence-unit> 
-   
+  </persistence-unit>
 </persistence>
