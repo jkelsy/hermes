@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="com.sgd.hermes.model" v="2.1" sm="false" xs="false" id="_1470328576751241" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
     <jpa:entity xre="false" compositePrimaryKeyClass="DepartamentoPK" abs="false" class="Departamento" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576758242">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" visibile="true" name="codigo" id="_1470328576758243">
                 <jpa:bv/>
-                <jpa:column name="dpto_codigo" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="dpto_codigo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="nombre" id="_1470328576758245">
                 <jpa:bv/>
-                <jpa:column name="dpto_nombre" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="dpto_nombre" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470328576758244">
                 <jpa:bv/>
-                <jpa:column name="dpto_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="dpto_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
                 <jpa:generated-value strategy="IDENTITY"/>
                 <jpa:sequence-generator name="dpto_id"/>
             </jpa:id>
@@ -20,37 +23,45 @@
         <jpa:table name="departamento"/>
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="UsuarioPK" abs="false" class="Usuario" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576765246">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" visibile="true" name="password" id="_1470328576765247">
                 <jpa:bv/>
-                <jpa:column name="usr_password" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="usr_password" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="login" id="_1470328576765249">
                 <jpa:bv/>
-                <jpa:column name="usr_login" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="usr_login" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470328576765248">
                 <jpa:bv/>
-                <jpa:column name="usr_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="usr_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
                 <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
         <jpa:table name="sec_usuario"/>
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="PobladoPK" abs="false" class="Poblado" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576771250">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" visibile="true" name="codigo" id="_1470328576771251">
                 <jpa:bv/>
-                <jpa:column name="pob_codigo" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="pob_codigo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="nombre" id="_1470328576771254">
                 <jpa:bv/>
-                <jpa:column name="pob_nombre" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="pob_nombre" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470328576824293" visibile="true" name="municipio" id="_1470328576771252"/>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576824293" visibile="true" name="municipio" id="_1470328576771252">
+                <jpa:join-column name="MUNICIPIO_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
             <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470328576771253">
                 <jpa:bv/>
-                <jpa:column name="pob_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="pob_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
                 <jpa:generated-value strategy="IDENTITY"/>
                 <jpa:sequence-generator name="pob_id"/>
             </jpa:id>
@@ -58,51 +69,59 @@
         <jpa:table name="poblado"/>
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="PermisoPK" abs="false" class="Permiso" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576780255">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:attributes>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470328576765246" visibile="true" name="usuario" id="_1470328576780256"/>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470328576831298" visibile="true" name="rol" id="_1470328576780258"/>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576765246" visibile="true" name="usuario" id="_1470328576780256"/>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576831298" visibile="true" name="rol" id="_1470328576780258"/>
             <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470328576780257">
                 <jpa:bv/>
-                <jpa:column name="permiso_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="permiso_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
                 <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
         <jpa:table name="sec_permiso"/>
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="TerceroPK" abs="false" class="Tercero" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576795259">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" visibile="true" name="apellido2" id="_1470328576795260">
                 <jpa:bv/>
-                <jpa:column name="ter_apellido2" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="ter_apellido2" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="apellido1" id="_1470328576795262">
                 <jpa:bv/>
-                <jpa:column name="ter_apellido1" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="ter_apellido1" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="direccion" id="_1470328576795263">
                 <jpa:bv/>
-                <jpa:column name="ter_direccion" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="ter_direccion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="identificacion" id="_1470328576795264">
                 <jpa:bv/>
-                <jpa:column name="ter_identificacion" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="ter_identificacion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="telefono" id="_1470328576795266">
                 <jpa:bv/>
-                <jpa:column name="ter_telefono" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="ter_telefono" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="email" id="_1470328576795267">
                 <jpa:bv/>
-                <jpa:column name="ter_email" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="ter_email" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="nombres" id="_1470328576795268">
                 <jpa:bv/>
-                <jpa:column name="ter_nombres" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="ter_nombres" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470328576847309" visibile="true" name="tipoIdentificacion" id="_1470328576795261"/>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576847309" visibile="true" name="tipoIdentificacion" id="_1470328576795261">
+                <jpa:join-column name="TIPO_IDENTIFICACION_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
             <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470328576795265">
                 <jpa:bv/>
-                <jpa:column name="ter_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="ter_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
                 <jpa:generated-value strategy="IDENTITY"/>
                 <jpa:sequence-generator name="ter_id"/>
             </jpa:id>
@@ -110,21 +129,24 @@
         <jpa:table name="tercero"/>
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="CargoPK" abs="false" class="Cargo" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576805269">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" visibile="true" name="descripcion" id="_1470328576805270">
                 <jpa:bv/>
-                <jpa:column name="cargo_descripcion" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="cargo_descripcion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="codigo" id="_1470328576805271">
                 <jpa:bv/>
-                <jpa:column name="cargo_codigo" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="cargo_codigo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470328576816274" visibile="true" name="empresa" id="_1470328576805273">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576816274" visibile="true" name="empresa" id="_1470328576805273">
                 <jpa:join-column name="EMPRESA_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470328576805272">
                 <jpa:bv/>
-                <jpa:column name="cargo_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="cargo_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
                 <jpa:generated-value strategy="IDENTITY"/>
                 <jpa:sequence-generator name="cargo_id"/>
             </jpa:id>
@@ -132,72 +154,79 @@
         <jpa:table name="cargo"/>
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="EmpresaPK" abs="false" class="Empresa" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576816274">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" visibile="true" name="radicadoSalida" id="_1470328576816275">
                 <jpa:bv/>
-                <jpa:column name="emp_radicado_salida" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_radicado_salida" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="logoFondoCarta" id="_1470328576816276">
                 <jpa:bv/>
-                <jpa:column name="emp_logo_fondo_carta" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_logo_fondo_carta" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="archivoRuta" id="_1470328576816277">
                 <jpa:bv/>
-                <jpa:column name="emp_archivo_ruta" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_archivo_ruta" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="direccion" id="_1470328576816278">
                 <jpa:bv/>
-                <jpa:column name="emp_direccion" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_direccion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="nombre" id="_1470328576816279">
                 <jpa:bv/>
-                <jpa:column name="emp_nombre" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_nombre" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="emailPass" id="_1470328576816280">
                 <jpa:bv/>
-                <jpa:column name="emp_email_pass" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_email_pass" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="logoUrl" id="_1470328576816281">
                 <jpa:bv/>
-                <jpa:column name="emp_logo_url" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_logo_url" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="nit" id="_1470328576816283">
                 <jpa:bv/>
-                <jpa:column name="emp_nit" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_nit" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="java.sql.Blob" visibile="true" name="logo" id="_1470328576816285">
                 <jpa:bv/>
-                <jpa:column name="emp_logo" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_logo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="emailHost" id="_1470328576816286">
                 <jpa:bv/>
-                <jpa:column name="emp_email_host" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_email_host" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="radicadoInterno" id="_1470328576817288">
                 <jpa:bv/>
-                <jpa:column name="emp_radicado_interno" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_radicado_interno" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="telefono" id="_1470328576817289">
                 <jpa:bv/>
-                <jpa:column name="emp_telefono" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_telefono" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="emailPort" id="_1470328576817290">
                 <jpa:bv/>
-                <jpa:column name="emp_email_port" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_email_port" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="radicadoEntrada" id="_1470328576817291">
                 <jpa:bv/>
-                <jpa:column name="emp_radicado_entrada" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_radicado_entrada" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="email" id="_1470328576817292">
                 <jpa:bv/>
-                <jpa:column name="emp_email" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_email" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470328576795259" visibile="true" name="representante" id="_1470328576816282"/>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470328576771250" visibile="true" name="poblado" id="_1470328576816284"/>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576795259" visibile="true" name="representante" id="_1470328576816282">
+                <jpa:join-column name="REPRESENTANTE_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576771250" visibile="true" name="poblado" id="_1470328576816284">
+                <jpa:join-column name="POBLADO_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
             <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470328576816287">
                 <jpa:bv/>
-                <jpa:column name="emp_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="emp_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
                 <jpa:generated-value strategy="IDENTITY"/>
                 <jpa:sequence-generator name="emp_id"/>
             </jpa:id>
@@ -205,19 +234,24 @@
         <jpa:table name="empresa"/>
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="MunicipioPK" abs="false" class="Municipio" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576824293">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" visibile="true" name="codigo" id="_1470328576824294">
                 <jpa:bv/>
-                <jpa:column name="mun_codigo" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="mun_codigo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="nombre" id="_1470328576824297">
                 <jpa:bv/>
-                <jpa:column name="mun_nombre" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="mun_nombre" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470328576758242" visibile="true" name="departamento" id="_1470328576824295"/>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576758242" visibile="true" name="departamento" id="_1470328576824295">
+                <jpa:join-column name="DEPARTAMENTO_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
             <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470328576824296">
                 <jpa:bv/>
-                <jpa:column name="mun_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="mun_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
                 <jpa:generated-value strategy="IDENTITY"/>
                 <jpa:sequence-generator name="mun_id"/>
             </jpa:id>
@@ -225,79 +259,381 @@
         <jpa:table name="municipio"/>
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="RolPK" abs="false" class="Rol" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576831298">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" visibile="true" name="nombre" id="_1470328576832300">
                 <jpa:bv/>
-                <jpa:column name="rol_nombre" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="rol_nombre" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470328576831299">
                 <jpa:bv/>
-                <jpa:column name="rol_id" unique="true" nullable="false" insertable="true" updatable="true"/>
+                <jpa:column name="rol_id" unique="true" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
                 <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
         <jpa:table name="sec_rol"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DependenciaPK" abs="false" class="Dependencia" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576840301">
+    <jpa:entity xre="false" compositePrimaryKeyClass="CentroCostoPK" abs="false" class="CentroCosto" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576840301">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:attributes>
             <jpa:basic attribute-type="long" visibile="true" name="consecutivoInterno" id="_1470328576840302">
                 <jpa:bv/>
-                <jpa:column name="depen_consecutivo_interno" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="ccosto_consecutivo_interno" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="codigo" id="_1470328576840303">
                 <jpa:bv/>
-                <jpa:column name="depen_codigo" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="ccosto_codigo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="long" visibile="true" name="consecutivoExterno" id="_1470328576840305">
                 <jpa:bv/>
-                <jpa:column name="depen_consecutivo_externo" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="ccosto_consecutivo_externo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="nombre" id="_1470328576840308">
                 <jpa:bv/>
-                <jpa:column name="depen_nombre" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="ccosto_nombre" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470328576795259" visibile="true" name="jefe" id="_1470328576840306"/>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470328576816274" visibile="true" name="empresa" id="_1470328576840307"/>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576795259" visibile="true" name="jefe" id="_1470328576840306">
+                <jpa:join-column name="JEFE_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576816274" visibile="true" name="empresa" id="_1470328576840307">
+                <jpa:join-column name="EMPRESA_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
             <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470328576840304">
                 <jpa:bv/>
-                <jpa:column name="depen_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="ccosto_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
                 <jpa:generated-value strategy="IDENTITY"/>
                 <jpa:sequence-generator name="depen_id"/>
             </jpa:id>
         </jpa:attributes>
-        <jpa:table name="dependencia"/>
+        <jpa:table name="cenro_costo"/>
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="TipoIdentificacionPK" abs="false" class="TipoIdentificacion" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576847309">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" visibile="true" name="codigo" id="_1470328576847310">
                 <jpa:bv/>
-                <jpa:column name="tpid_codigo" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="tpid_codigo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="abreviatura" id="_1470328576847311">
                 <jpa:bv/>
-                <jpa:column name="tpid_abreviatura" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="tpid_abreviatura" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" visibile="true" name="nombre" id="_1470328576847313">
                 <jpa:bv/>
-                <jpa:column name="tpid_nombre" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="tpid_nombre" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470328576847312">
                 <jpa:bv/>
-                <jpa:column name="tpid_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column name="tpid_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
                 <jpa:generated-value strategy="IDENTITY"/>
                 <jpa:sequence-generator name="tpid_id"/>
             </jpa:id>
         </jpa:attributes>
         <jpa:table name="tipo_identificacion"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="Entity_1PK" abs="false" class="Entity_1" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328625151">
+    <jpa:entity xre="false" compositePrimaryKeyClass="TipoPreservacionPK" abs="false" class="TipoPreservacion" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470423375582">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:attributes>
-            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470328625163360"/>
+            <jpa:basic attribute-type="String" visibile="true" name="codigo" id="_147042363588324">
+                <jpa:bv/>
+                <jpa:column name="tp_preserva_codigo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="descripcion" id="_147042366930625">
+                <jpa:bv/>
+                <jpa:column name="tp_preserva_descripcion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_147042337559422">
+                <jpa:bv/>
+                <jpa:column name="tp_preserva_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
         </jpa:attributes>
-        <jpa:nq e="false" name="Entity_1.findAll">
-            <jpa:query>Select e from Entity_1 e</jpa:query>
+        <jpa:nq e="false" name="TipoPreservacion.findAll">
+            <jpa:query>Select e from TipoPreservacion e</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="TipoPreservacion.findByCodigo">
+            <jpa:query>Select t from TipoPreservacion t where t.codigo=:codigo</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TipoPreservacion.findByDescripcion">
+            <jpa:query>Select t from TipoPreservacion t where t.descripcion=:descripcion</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tipo_preservacion"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="TipoArmarioPK" abs="false" class="TipoArmario" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470423854959">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" visibile="true" name="codigo" id="_147042393073628">
+                <jpa:bv/>
+                <jpa:column name="tp_armario_codigo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="descripcion" id="_147042394216029">
+                <jpa:bv/>
+                <jpa:column name="tp_armario_descripcion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_147042385496726">
+                <jpa:bv/>
+                <jpa:column name="tp_armario_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="TipoArmario.findAll">
+            <jpa:query>Select e from TipoArmario e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TipoArmario.findByCodigo">
+            <jpa:query>Select t from TipoArmario t where t.codigo=:codigo</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TipoArmario.findByDescripcion">
+            <jpa:query>Select t from TipoArmario t where t.descripcion=:descripcion</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tipo_armario"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="TablaRetencionDocumentalPK" abs="false" class="TablaRetencionDocumental" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470424021830">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="Boolean" visibile="true" name="seConserva" id="_1470427638632121">
+                <jpa:bv/>
+                <jpa:column name="trd_se_conserva" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="Boolean" visibile="true" name="enDigital" id="_1470427638864122">
+                <jpa:bv/>
+                <jpa:column name="trd_en_digital" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="Boolean" visibile="true" name="seElimina" id="_1470427639024123">
+                <jpa:bv/>
+                <jpa:column name="trd_se_elimina" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="Boolean" visibile="true" name="enFisico" id="_1470427639712124">
+                <jpa:bv/>
+                <jpa:column name="trd_en_fisico" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="Boolean" visibile="true" name="enMicro" id="_1470427639888125">
+                <jpa:bv/>
+                <jpa:column name="trd_en_micro" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="descrpcion" id="_1470427640072126">
+                <jpa:bv/>
+                <jpa:column name="trd_descrpcion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="Boolean" visibile="true" name="seleccion" id="_1470427640248127">
+                <jpa:bv/>
+                <jpa:column name="trd_seleccion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576840301" visibile="true" name="centroCosto" id="_1470428046575131">
+                <jpa:join-column name="CCOSTO_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470428487858" visibile="true" name="subSerie" id="_1470428589556141">
+                <jpa:join-column name="SUB_SERIE_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_147042402184130">
+                <jpa:bv/>
+                <jpa:column name="trd_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="TablaRetencionDocumental.findAll">
+            <jpa:query>Select e from TablaRetencionDocumental e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TablaRetencionDocumental.findBySeConserva">
+            <jpa:query>Select t from TablaRetencionDocumental t where t.seConserva=:seConserva</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TablaRetencionDocumental.findByEnDigital">
+            <jpa:query>Select t from TablaRetencionDocumental t where t.enDigital=:enDigital</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TablaRetencionDocumental.findBySeElimina">
+            <jpa:query>Select t from TablaRetencionDocumental t where t.seElimina=:seElimina</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TablaRetencionDocumental.findByEnFisico">
+            <jpa:query>Select t from TablaRetencionDocumental t where t.enFisico=:enFisico</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TablaRetencionDocumental.findByEnMicro">
+            <jpa:query>Select t from TablaRetencionDocumental t where t.enMicro=:enMicro</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TablaRetencionDocumental.findByDescrpcion">
+            <jpa:query>Select t from TablaRetencionDocumental t where t.descrpcion=:descrpcion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TablaRetencionDocumental.findBySeleccion">
+            <jpa:query>Select t from TablaRetencionDocumental t where t.seleccion=:seleccion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TablaRetencionDocumental.findByAttribute7">
+            <jpa:query>Select t from TablaRetencionDocumental t where t.attribute7=:attribute7</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TablaRetencionDocumental.findByAttribute8">
+            <jpa:query>Select t from TablaRetencionDocumental t where t.attribute8=:attribute8</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TablaRetencionDocumental.findByAttribute9">
+            <jpa:query>Select t from TablaRetencionDocumental t where t.attribute9=:attribute9</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tabla_retencion_documental"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="ArchivoCentralPK" abs="false" class="ArchivoCentral" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470424354330">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" visibile="true" name="descripcion" id="_147042534043134">
+                <jpa:bv/>
+                <jpa:column name="ac_descripcion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="estante" id="_147042534066335">
+                <jpa:bv/>
+                <jpa:column name="ac_estante" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.sql.Date" visibile="true" name="fechaCreacion" id="_147042534087136">
+                <jpa:bv/>
+                <jpa:column name="ac_fecha_creacion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.sql.Date" visibile="true" name="fechaMovimiento" id="_147042534104737">
+                <jpa:bv/>
+                <jpa:column name="ac_fecha_movimiento" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="cajon" id="_147042534121538">
+                <jpa:bv/>
+                <jpa:column name="ac_cajon" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="numero" id="_147042534159139">
+                <jpa:bv/>
+                <jpa:column name="ac_numero" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="numeroConservacion" id="_147042534177540">
+                <jpa:bv/>
+                <jpa:column name="ac_numero_conservacion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="numeroDocumento" id="_147042534195941">
+                <jpa:bv/>
+                <jpa:column name="ac_numero_documento" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576765246" visibile="true" name="creadoPor" id="_147042606034947">
+                <jpa:join-column name="USR_PERSONA_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576765246" visibile="true" name="persona" id="_147042606638048">
+                <jpa:join-column name="USR_CREA_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470423375582" visibile="true" name="tipoPreservacion" id="_147042608100349">
+                <jpa:join-column name="TP_PRESERVA_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470423854959" visibile="true" name="tipoArmario" id="_147042610398150">
+                <jpa:join-column name="TP_ARMARIO_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470424021830" visibile="true" name="tablaRetencionDocumental" id="_147042612610051">
+                <jpa:join-column name="TRD_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_147042435433832">
+                <jpa:bv/>
+                <jpa:column name="ac_id" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="ArchivoCentral.findAll">
+            <jpa:query>Select e from ArchivoCentral e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ArchivoCentral.findByDescripcion">
+            <jpa:query>Select a from ArchivoCentral a where a.descripcion=:descripcion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ArchivoCentral.findByEstante">
+            <jpa:query>Select a from ArchivoCentral a where a.estante=:estante</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ArchivoCentral.findByFechaCreacion">
+            <jpa:query>Select a from ArchivoCentral a where a.fechaCreacion=:fechaCreacion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ArchivoCentral.findByFechaMovimiento">
+            <jpa:query>Select a from ArchivoCentral a where a.fechaMovimiento=:fechaMovimiento</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ArchivoCentral.findByCajon">
+            <jpa:query>Select a from ArchivoCentral a where a.cajon=:cajon</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ArchivoCentral.findByNumero">
+            <jpa:query>Select a from ArchivoCentral a where a.numero=:numero</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ArchivoCentral.findByNumeroConservacion">
+            <jpa:query>Select a from ArchivoCentral a where a.numeroConservacion=:numeroConservacion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ArchivoCentral.findByNumeroDocumento">
+            <jpa:query>Select a from ArchivoCentral a where a.numeroDocumento=:numeroDocumento</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ArchivoCentral.findByAttribute8">
+            <jpa:query>Select a from ArchivoCentral a where a.attribute8=:attribute8</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ArchivoCentral.findByAttribute9">
+            <jpa:query>Select a from ArchivoCentral a where a.attribute9=:attribute9</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ArchivoCentral.findByAttribute10">
+            <jpa:query>Select a from ArchivoCentral a where a.attribute10=:attribute10</jpa:query>
+        </jpa:nq>
+        <jpa:table name="archivo_central"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="SeriePK" abs="false" class="Serie" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470428376862">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" visibile="true" name="codigo" id="_1470428429715134">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="descripcion" id="_1470428430674135">
+                <jpa:bv/>
+                <jpa:column name="serie_descripcion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470428376885132">
+                <jpa:bv/>
+                <jpa:column name="serie_id" unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Serie.findAll">
+            <jpa:query>Select e from Serie e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Serie.findByCodigo">
+            <jpa:query>Select s from Serie s where s.codigo=:codigo</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Serie.findByDescripcion">
+            <jpa:query>Select s from Serie s where s.descripcion=:descripcion</jpa:query>
+        </jpa:nq>
+        <jpa:table name="serie"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="SubSeriePK" abs="false" class="SubSerie" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470428487858">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" visibile="true" name="codigo" id="_1470428539066138">
+                <jpa:bv/>
+                <jpa:column name="sub_serie_codigo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="descripcion" id="_1470428540098139">
+                <jpa:bv/>
+                <jpa:column name="sub_serie_descripcion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470428376862" visibile="true" name="serie" id="_1470428581958140">
+                <jpa:join-column name="SERIE_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470428487882136">
+                <jpa:bv/>
+                <jpa:column name="sub_serie_id" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="SubSerie.findAll">
+            <jpa:query>Select e from SubSerie e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="SubSerie.findByCodigo">
+            <jpa:query>Select s from SubSerie s where s.codigo=:codigo</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="SubSerie.findByDescripcion">
+            <jpa:query>Select s from SubSerie s where s.descripcion=:descripcion</jpa:query>
+        </jpa:nq>
+        <jpa:table name="sub_serie"/>
     </jpa:entity>
     <jpa:snp e="true" loc="BEFORE_PACKAGE">/**
  * This file was generated by the JPA Modeler
@@ -306,40 +642,55 @@
     <jpa:diagram>
         <plane elementRef="_1470328576751241">
             <shape elementRef="_1470328576758242">
-                <Bounds x="512.0" y="1220.0" width="199.0" height="106.0"/>
+                <Bounds x="90.0" y="-10.0" width="199.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470328576765246">
-                <Bounds x="1469.0" y="816.0" width="151.0" height="106.0"/>
+                <Bounds x="1276.0" y="308.0" width="151.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470328576771250">
-                <Bounds x="32.0" y="816.0" width="154.0" height="138.0"/>
+                <Bounds x="-204.0" y="270.0" width="154.0" height="138.0"/>
             </shape>
             <shape elementRef="_1470328576780255">
-                <Bounds x="1252.0" y="334.0" width="153.0" height="106.0"/>
+                <Bounds x="1296.0" y="572.0" width="153.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470328576795259">
-                <Bounds x="512.0" y="32.0" width="164.0" height="238.0"/>
+                <Bounds x="410.0" y="32.0" width="164.0" height="238.0"/>
             </shape>
             <shape elementRef="_1470328576805269">
-                <Bounds x="512.0" y="816.0" width="138.0" height="138.0"/>
+                <Bounds x="-218.0" y="657.0" width="138.0" height="138.0"/>
             </shape>
             <shape elementRef="_1470328576816274">
-                <Bounds x="285.0" y="334.0" width="157.0" height="418.0"/>
+                <Bounds x="-29.0" y="308.0" width="157.0" height="418.0"/>
             </shape>
             <shape elementRef="_1470328576824293">
-                <Bounds x="285.0" y="1018.0" width="163.0" height="138.0"/>
+                <Bounds x="-29.0" y="107.0" width="163.0" height="138.0"/>
             </shape>
             <shape elementRef="_1470328576831298">
-                <Bounds x="1060.0" y="816.0" width="128.0" height="86.0"/>
+                <Bounds x="1287.0" y="795.0" width="128.0" height="86.0"/>
             </shape>
             <shape elementRef="_1470328576840301">
-                <Bounds x="32.0" y="32.0" width="189.0" height="198.0"/>
+                <Bounds x="336.0" y="710.0" width="185.0" height="198.0"/>
             </shape>
             <shape elementRef="_1470328576847309">
-                <Bounds x="775.0" y="334.0" width="221.0" height="126.0"/>
+                <Bounds x="597.0" y="32.0" width="221.0" height="126.0"/>
             </shape>
-            <shape elementRef="_1470328625151">
-                <Bounds x="603.0" y="1018.0" width="151.0" height="54.0"/>
+            <shape elementRef="_1470423375582">
+                <Bounds x="597.0" y="308.0" width="218.0" height="106.0"/>
+            </shape>
+            <shape elementRef="_1470423854959">
+                <Bounds x="543.0" y="604.0" width="181.0" height="106.0"/>
+            </shape>
+            <shape elementRef="_1470424021830">
+                <Bounds x="919.0" y="572.0" width="290.0" height="258.0"/>
+            </shape>
+            <shape elementRef="_1470424354330">
+                <Bounds x="935.0" y="148.0" width="227.0" height="338.0"/>
+            </shape>
+            <shape elementRef="_1470428376862">
+                <Bounds x="935.0" y="875.0" width="133.0" height="106.0"/>
+            </shape>
+            <shape elementRef="_1470428487858">
+                <Bounds x="655.0" y="859.0" width="160.0" height="138.0"/>
             </shape>
         </plane>
     </jpa:diagram>

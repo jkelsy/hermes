@@ -30,17 +30,17 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         super(Usuario.class);
     }
 
-    public Usuario findByLogin(String login) throws Exception {
+    public Usuario findByLogin(String login)  {
         List<Usuario> lista = null;
 
-        try {
+       // try {
             String jpql = " FROM Usuario u WHERE u.login = ?1";
             lista = em.createQuery(jpql, Usuario.class)
                     .setParameter(1, login).getResultList();
-        } catch (Exception e) {
+/*        } catch (Exception e) {
             System.err.println("ERRROROROORO" + e.getMessage());
             throw e;
-        }
+        }*/
         if (lista == null || lista.isEmpty()) {
             return null;
         }

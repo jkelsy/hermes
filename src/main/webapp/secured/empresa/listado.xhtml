@@ -21,7 +21,8 @@
             </ui:define>
             <ui:define name="content">
                 <h:form>
-                    <p:commandButton action="#{empresaController.crear}" value="Nuevo" />
+                    <p:commandButton action="#{empresaController.crear()}" value="Nuevo" />
+                    <p:commandButton action="#{empresaController.cargarDepartamento()}" value="Carga" />
                     <p:dataTable var="emp" value="#{empresaController.empresas}">
 
                         <p:column>

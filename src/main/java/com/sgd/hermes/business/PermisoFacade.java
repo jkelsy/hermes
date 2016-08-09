@@ -32,19 +32,19 @@ public class PermisoFacade extends AbstractFacade<Permiso> {
         super(Permiso.class);
     }
 
-    public Permiso findByUsuarioAndRol(Usuario usuario, Rol rol) throws Exception {
+    public Permiso findByUsuarioAndRol(Usuario usuario, Rol rol){
         List<Permiso> lista = null;
 
-        try {
+       // try {
             String jpql = " FROM Permiso p WHERE p.usuario.id = ?1 and p.rol.id = ?2";
             lista = em.createQuery(jpql, Permiso.class)
                     .setParameter(1, usuario.getId())
                     .setParameter(2, rol.getId())
                     .getResultList();
-        } catch (Exception e) {
+/*        } catch (Exception e) {
             System.err.println("ERRROROROORO" + e.getMessage());
             throw e;
-        }
+        }*/
         if (lista == null || lista.isEmpty()) {
             return null;
         }

@@ -4,31 +4,32 @@
 package com.sgd.hermes.model;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
  * @author jdmp
  */
 @Entity
-@Table(name = "sec_permiso")
-public class Permiso implements Serializable {
+@Table(name = "serie")
+public class Serie implements Serializable {
 
-    @Column(name = "permiso_id", unique = true)
+    @Column(name = "serie_id", unique = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(targetEntity = Usuario.class)
-    private Usuario usuario;
+    @Basic
+    private String codigo;
 
-    @ManyToOne(targetEntity = Rol.class)
-    private Rol rol;
+    @Column(name = "serie_descripcion")
+    @Basic
+    private String descripcion;
 
     public Long getId() {
         return this.id;
@@ -38,20 +39,20 @@ public class Permiso implements Serializable {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
-        return this.usuario;
+    public String getCodigo() {
+        return this.codigo;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    public Rol getRol() {
-        return this.rol;
+    public String getDescripcion() {
+        return this.descripcion;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
 }

@@ -22,6 +22,7 @@ import com.sgd.hermes.model.Tercero;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
@@ -450,29 +451,31 @@ public class EmpresaController implements Serializable {
         String line = "";
         String cvsSplitBy = ",";
 
+        System.out.println("Iniciando cargue....");
+        
         try {
 
-            br = reader;//new BufferedReader(new FileReader(csvFile));
+            br = new BufferedReader(new FileReader(csvFile));
             while ((line = br.readLine()) != null) {
 
                 // use comma as separator
                 String[] departamento = line.split(cvsSplitBy);
-
+                
                 System.out.println("Departamento [codigo= " + departamento[0] + " , nombre=" + departamento[1] + "]");
 
             }
 
         } catch (FileNotFoundException e) {
-            System.err.println("Error" + e);
+            System.err.println("Error archivo no encontrado" + e);
 
         } catch (IOException e) {
-            System.err.println("Error" + e);
+            System.err.println("Error no se porque" + e);
         } finally {
             if (br != null) {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    System.err.println("Error" + e);
+                    System.err.println("Error cerrando archivo...d" + e);
                 }
             }
         }

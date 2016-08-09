@@ -32,17 +32,17 @@ public class RolFacade extends AbstractFacade<Rol> {
     }
     
     
-    public Rol findByNombre(String nombre) throws Exception{
+    public Rol findByNombre(String nombre){
         List<Rol> roles = null;
         
-        try {
+        //try {
             String jpql = " FROM Rol r WHERE r.nombre = ?1";
             roles =  em.createQuery(jpql, Rol.class)
                     .setParameter(1, nombre).getResultList();
-        } catch (Exception e) {
+        /*} catch (Exception e) {
              System.err.println("ERRROROROORO"+e.getMessage());
             throw e;
-        }
+        }*/
        if (roles == null || roles.isEmpty()) {
         return null;
     }

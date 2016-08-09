@@ -10,29 +10,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
  * @author jdmp
  */
 @Entity
-@Table(name = "departamento")
-public class Departamento implements Serializable {
+@Table(name = "tipo_preservacion")
+public class TipoPreservacion implements Serializable {
 
-    @Column(name = "dpto_id", unique = true)
+    @Column(name = "tp_preserva_id", unique = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name = "dpto_id")
     private Long id;
 
-    @Column(name = "dpto_codigo")
+    @Column(name = "tp_preserva_codigo")
     @Basic
     private String codigo;
 
-    @Column(name = "dpto_nombre")
+    @Column(name = "tp_preserva_descripcion")
     @Basic
-    private String nombre;
+    private String descripcion;
 
     public Long getId() {
         return this.id;
@@ -50,12 +48,12 @@ public class Departamento implements Serializable {
         this.codigo = codigo;
     }
 
-    public String getNombre() {
-        return this.nombre;
+    public String getDescripcion() {
+        return this.descripcion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
 }
