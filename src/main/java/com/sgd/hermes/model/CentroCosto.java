@@ -19,13 +19,13 @@ import javax.persistence.Table;
  * @author jkelsy
  */
 @Entity
-@Table(name = "cenro_costo")
+@Table(name = "centro_costo")
 public class CentroCosto implements Serializable {
 
     @Column(name = "ccosto_id", unique = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name = "depen_id")
+    @SequenceGenerator(name = "ccosto_id")
     private Long id;
 
     @Column(name = "ccosto_consecutivo_interno")
