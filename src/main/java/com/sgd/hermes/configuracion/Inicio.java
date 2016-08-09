@@ -74,9 +74,7 @@ public class Inicio {
             permiso.setUsuario(usuario);
             permiso.setRol(rol);
             permisoFacade.create(permiso);
-        }
-
-        System.out.println("ajshkjashkj");
+        }    
 
     }
 }

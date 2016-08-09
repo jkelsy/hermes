@@ -510,10 +510,7 @@
                 <jpa:column name="ac_numero_documento" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576765246" visibile="true" name="creadoPor" id="_147042606034947">
-                <jpa:join-column name="USR_PERSONA_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
-            </jpa:many-to-one>
-            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576765246" visibile="true" name="persona" id="_147042606638048">
-                <jpa:join-column name="USR_CREA_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:join-column name="TERCERO_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470423375582" visibile="true" name="tipoPreservacion" id="_147042608100349">
                 <jpa:join-column name="TP_PRESERVA_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
@@ -630,17 +627,152 @@
         </jpa:nq>
         <jpa:table name="sub_serie"/>
     </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="TipoDocumentalPK" abs="false" class="TipoDocumental" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470782499488">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" visibile="true" name="descripcion" id="_1470782673858564">
+                <jpa:bv/>
+                <jpa:column name="tp_documental_descripcion" unique="true" nullable="true" insertable="true" updatable="true" length="255"/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470782499514562">
+                <jpa:bv/>
+                <jpa:column name="tp_documental_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="TipoDocumental.findAll">
+            <jpa:query>Select e from TipoDocumental e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TipoDocumental.findByDescripcion">
+            <jpa:query>Select t from TipoDocumental t where t.descripcion=:descripcion</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tipo_documental"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="TRDTipoDocumentalPK" abs="false" class="TRDTipoDocumental" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470783288311">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470424021830" visibile="true" name="tablaRetencionDocumental" id="_1470783524414569">
+                <jpa:join-column name="TRD_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470782499488" visibile="true" name="tipoDocumental" id="_1470783533478570">
+                <jpa:join-column name="TIPO_DOCUMENTAL_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470783288344567">
+                <jpa:bv/>
+                <jpa:column unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="TRDTipoDocumental.findAll">
+            <jpa:query>Select e from TRDTipoDocumental e</jpa:query>
+        </jpa:nq>
+        <jpa:table name="trd_tipo_documental"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="ArchivoPK" abs="false" class="Archivo" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470784190384">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" visibile="true" name="nombre" id="_1470784326886856">
+                <jpa:bv/>
+                <jpa:column name="arch_nombre" unique="false" nullable="true" insertable="true" updatable="true" length="255"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470784409235" visibile="true" name="tipoArchivo" id="_1470784633185861">
+                <jpa:join-column name="TP_ARCHIVO_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470784190443653">
+                <jpa:bv/>
+                <jpa:column name="archivo_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Archivo.findAll">
+            <jpa:query>Select e from Archivo e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Archivo.findByNombre">
+            <jpa:query>Select a from Archivo a where a.nombre=:nombre</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Archivo.findByTipo">
+            <jpa:query>Select a from Archivo a where a.tipo=:tipo</jpa:query>
+        </jpa:nq>
+        <jpa:table name="archivo"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="TipoArchivoPK" abs="false" class="TipoArchivo" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470784409235">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" visibile="true" name="descripcion" id="_1470784691618876">
+                <jpa:bv/>
+                <jpa:column name="tp_archivo_descripcion" unique="true" nullable="true" insertable="true" updatable="true" length="255"/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470784409306858">
+                <jpa:bv/>
+                <jpa:column name="tp_archivo_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="TipoArchivo.findAll">
+            <jpa:query>Select e from TipoArchivo e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TipoArchivo.findByDescripcion">
+            <jpa:query>Select t from TipoArchivo t where t.descripcion=:descripcion</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleArchivoCentralPK" abs="false" class="DetalleArchivoCentral" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470785273823">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.sql.Date" visibile="true" name="fecha" id="_1470785369656879">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470328576765246" visibile="true" name="usuario" id="_1470785527170880">
+                <jpa:join-column name="CREADO_POR_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470424354330" visibile="true" name="archivoCentral" id="_1470785544234881">
+                <jpa:join-column name="ARCHIVO_CENTRAL_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470782499488" visibile="true" name="tipoDocumental" id="_1470785575578883">
+                <jpa:join-column name="TP_DOCUMENTAL_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470784190384" visibile="true" name="archivo" id="_1470785588474884">
+                <jpa:join-column name="ARCHIVO_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1470785273885877">
+                <jpa:bv/>
+                <jpa:column name="detalle_ac_id" unique="true" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="DetalleArchivoCentral.findAll">
+            <jpa:query>Select e from DetalleArchivoCentral e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleArchivoCentral.findByFecha">
+            <jpa:query>Select d from DetalleArchivoCentral d where d.fecha=:fecha</jpa:query>
+        </jpa:nq>
+        <jpa:table name="detalle_archivo_central"/>
+    </jpa:entity>
     <jpa:snp e="true" loc="BEFORE_PACKAGE">/**
  * This file was generated by the JPA Modeler
  */</jpa:snp>
-    <jpa:c/>
+    <jpa:c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Map</ct>
+        <ct>java.util.Collection</ct>
+    </jpa:c>
     <jpa:diagram>
         <plane elementRef="_1470328576751241">
             <shape elementRef="_1470328576758242">
                 <Bounds x="90.0" y="-10.0" width="199.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470328576765246">
-                <Bounds x="1276.0" y="308.0" width="151.0" height="106.0"/>
+                <Bounds x="1296.0" y="202.0" width="151.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470328576771250">
                 <Bounds x="-204.0" y="270.0" width="154.0" height="138.0"/>
@@ -649,13 +781,13 @@
                 <Bounds x="1296.0" y="572.0" width="153.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470328576795259">
-                <Bounds x="410.0" y="32.0" width="164.0" height="238.0"/>
+                <Bounds x="278.0" y="80.0" width="164.0" height="238.0"/>
             </shape>
             <shape elementRef="_1470328576805269">
                 <Bounds x="-218.0" y="657.0" width="138.0" height="138.0"/>
             </shape>
             <shape elementRef="_1470328576816274">
-                <Bounds x="-29.0" y="308.0" width="157.0" height="418.0"/>
+                <Bounds x="-3.0" y="308.0" width="157.0" height="418.0"/>
             </shape>
             <shape elementRef="_1470328576824293">
                 <Bounds x="-29.0" y="107.0" width="163.0" height="138.0"/>
@@ -664,7 +796,7 @@
                 <Bounds x="1287.0" y="795.0" width="128.0" height="86.0"/>
             </shape>
             <shape elementRef="_1470328576840301">
-                <Bounds x="336.0" y="710.0" width="185.0" height="198.0"/>
+                <Bounds x="39.0" y="860.0" width="185.0" height="198.0"/>
             </shape>
             <shape elementRef="_1470328576847309">
                 <Bounds x="597.0" y="32.0" width="221.0" height="126.0"/>
@@ -673,19 +805,34 @@
                 <Bounds x="597.0" y="308.0" width="218.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470423854959">
-                <Bounds x="543.0" y="604.0" width="181.0" height="106.0"/>
+                <Bounds x="289.0" y="572.0" width="181.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470424021830">
-                <Bounds x="919.0" y="572.0" width="290.0" height="258.0"/>
+                <Bounds x="597.0" y="550.0" width="290.0" height="258.0"/>
             </shape>
             <shape elementRef="_1470424354330">
-                <Bounds x="935.0" y="148.0" width="227.0" height="338.0"/>
+                <Bounds x="971.0" y="17.0" width="227.0" height="318.0"/>
             </shape>
             <shape elementRef="_1470428376862">
-                <Bounds x="935.0" y="875.0" width="133.0" height="106.0"/>
+                <Bounds x="410.0" y="956.0" width="133.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470428487858">
-                <Bounds x="655.0" y="859.0" width="160.0" height="138.0"/>
+                <Bounds x="639.0" y="890.0" width="160.0" height="138.0"/>
+            </shape>
+            <shape elementRef="_1470782499488">
+                <Bounds x="941.0" y="621.0" width="210.0" height="86.0"/>
+            </shape>
+            <shape elementRef="_1470783288311">
+                <Bounds x="941.0" y="754.0" width="237.0" height="106.0"/>
+            </shape>
+            <shape elementRef="_1470784190384">
+                <Bounds x="1004.0" y="900.0" width="147.0" height="118.0"/>
+            </shape>
+            <shape elementRef="_1470784409235">
+                <Bounds x="1212.0" y="942.0" width="177.0" height="86.0"/>
+            </shape>
+            <shape elementRef="_1470785273823">
+                <Bounds x="971.0" y="394.0" width="250.0" height="178.0"/>
             </shape>
         </plane>
     </jpa:diagram>
