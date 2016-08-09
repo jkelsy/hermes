@@ -16,31 +16,31 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
- * @author jdmp
+ * @author jkelsy
  */
 @Entity
-@Table(name = "dependencia")
-public class Dependencia implements Serializable {
+@Table(name = "cenro_costo")
+public class CentroCosto implements Serializable {
 
-    @Column(name = "depen_id", unique = true)
+    @Column(name = "ccosto_id", unique = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @SequenceGenerator(name = "depen_id")
     private Long id;
 
-    @Column(name = "depen_consecutivo_interno")
+    @Column(name = "ccosto_consecutivo_interno")
     @Basic
     private long consecutivoInterno;
 
-    @Column(name = "depen_codigo")
+    @Column(name = "ccosto_codigo")
     @Basic
     private String codigo;
 
-    @Column(name = "depen_consecutivo_externo")
+    @Column(name = "ccosto_consecutivo_externo")
     @Basic
     private long consecutivoExterno;
 
-    @Column(name = "depen_nombre")
+    @Column(name = "ccosto_nombre")
     @Basic
     private String nombre;
 

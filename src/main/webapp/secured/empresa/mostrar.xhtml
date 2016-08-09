@@ -123,15 +123,15 @@
 
 
 
-                        <h4>Dependencias </h4>
+                        <h4>Centros Costo </h4>
                         <p:commandButton icon="ui-icon-plusthick" value="Nuevo" 
                                          oncomplete="PF('wDialogoNuevaDependencia').show();"                
-                                         actionListener="#{empresaController.crearDependencia()}"
+                                         actionListener="#{empresaController.crearCentroCosto()}"
                                          update=":frmDialogoNuevaDependencia"
                                          />
 
 
-                        <p:dataTable id="listaDependencias" emptyMessage="No hay resultados a mostrar" value="#{empresaController.dependenciaList}" var="depen">
+                        <p:dataTable id="listaDependencias" emptyMessage="No hay resultados a mostrar" value="#{empresaController.centroCostoList}" var="depen">
                             <p:column headerText="Codigo" filterBy="#{depen.codigo}" filterMatchMode="contains">
                                 <f:facet name="header">
                                     <h:outputText value="codigo" />
@@ -164,7 +164,7 @@
                             </p:column>
 
                             <p:column headerText="Editar">
-                                <p:commandLink value="Editar" oncomplete="PF('wDialogoNuevaDependencia').show();" actionListener="#{empresaController.seleccionarDependencia(depen)}"
+                                <p:commandLink value="Editar" oncomplete="PF('wDialogoNuevaDependencia').show();" actionListener="#{empresaController.seleccionarCentroCosto(depen)}"
                                                update=":frmDialogoNuevaDependencia" />
                             </p:column>
 
@@ -214,11 +214,11 @@
                             <h:panelGrid columns="2">
                                 <p:outputLabel for="txtCodigoDependencia" value="Codigo"/>
                                 <p:inputMask id="txtCodigoDependencia" mask="999" required="true"  
-                                             value="#{empresaController.dependenciaInstance.codigo}"/>
+                                             value="#{empresaController.centroCostoInstance.codigo}"/>
 
                                 <p:outputLabel for="txtNombreDependencia" value="Nombre"/>
                                 <p:inputText id="txtNombreDependencia" required="true"  
-                                             value="#{empresaController.dependenciaInstance.nombre}"/>
+                                             value="#{empresaController.centroCostoInstance.nombre}"/>
 
 
                                 <p:outputLabel for="txtJefeDependencia" value="Jefe"></p:outputLabel>
@@ -233,28 +233,28 @@
 
                                 <p:outputLabel for="txtConsecutivoInterno" value="Consecutivo Interno"/>
                                 <p:inputText type="number"  id="txtConsecutivoInterno"  required="true"  
-                                             value="#{empresaController.dependenciaInstance.consecutivoInterno}"/>
+                                             value="#{empresaController.centroCostoInstance.consecutivoInterno}"/>
 
 
                                 <p:outputLabel for="txtConsecutivoExterno" value="Consecutivo Externo"/>
                                 <p:inputText type="number"  id="txtConsecutivoExterno"  required="true"  
-                                             value="#{empresaController.dependenciaInstance.consecutivoExterno}"/>
+                                             value="#{empresaController.centroCostoInstance.consecutivoExterno}"/>
 
 
 
 
 
                                 <p:commandButton value="#{empresaController.accion}" icon="ui-icon-check" update=":frmPrincipal:listaDependencias" 
-                                                 actionListener="#{empresaController.registraDependencia()}" oncomplete="PF('wDialogoNuevaDependencia').hide();" 
+                                                 actionListener="#{empresaController.registraCentroCosto()}" oncomplete="PF('wDialogoNuevaDependencia').hide();" 
                                                  rendered="#{empresaController.accion == 'Grabar'}"
                                                  />
 
                                 <p:commandButton value="#{empresaController.accion}" icon="ui-icon-refresh" update=":frmPrincipal:listaDependencias" 
-                                                 actionListener="#{empresaController.registraDependencia()}" oncomplete="PF('wDialogoNuevaDependencia').hide();" 
+                                                 actionListener="#{empresaController.registraCentroCosto()}" oncomplete="PF('wDialogoNuevaDependencia').hide();" 
                                                  rendered="#{empresaController.accion == 'Actualizar'}"
                                                  />
                                 <p:commandButton value="Eliminar" icon="ui-icon-refresh" update=":frmPrincipal:listaDependencias" 
-                                                 actionListener="#{empresaController.eliminarDependencia()}" oncomplete="PF('wDialogoNuevaDependencia').hide();" 
+                                                 actionListener="#{empresaController.eliminarCentroCosto()}" oncomplete="PF('wDialogoNuevaDependencia').hide();" 
 
                                                  />
                                 <p:commandButton value="Cancelar" icon="ui-icon-close" inmediate="true" oncomplete="PF('wDialogoNuevoCargo').hide();"/>

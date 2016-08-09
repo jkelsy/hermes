@@ -6,15 +6,15 @@
 package com.sgd.hermes.controller;
 
 import com.sgd.hermes.business.CargoFacade;
+import com.sgd.hermes.business.CentroCostoFacade;
 import com.sgd.hermes.business.DepartamentoFacade;
-import com.sgd.hermes.business.DependenciaFacade;
 import com.sgd.hermes.business.EmpresaFacade;
 import com.sgd.hermes.business.MunicipioFacade;
 import com.sgd.hermes.business.PobladoFacade;
 import com.sgd.hermes.business.TerceroFacade;
 import com.sgd.hermes.model.Cargo;
+import com.sgd.hermes.model.CentroCosto;
 import com.sgd.hermes.model.Departamento;
-import com.sgd.hermes.model.Dependencia;
 import com.sgd.hermes.model.Empresa;
 import com.sgd.hermes.model.Municipio;
 import com.sgd.hermes.model.Poblado;
@@ -58,7 +58,7 @@ public class EmpresaController implements Serializable {
     private CargoFacade cargoFacade;
 
     @Inject
-    private DependenciaFacade dependenciaFacade;
+    private CentroCostoFacade centroCostoFacade;
 
     private Empresa seleccionado = new Empresa();
 
@@ -82,13 +82,13 @@ public class EmpresaController implements Serializable {
 
     private List<Cargo> cargoList;
 
-    private List<Dependencia> dependenciaList;
+    private List<CentroCosto> centroCostoList;
 
     private List<Tercero> jefeList;
 
     private Cargo cargoInstance;
 
-    private Dependencia dependenciaInstance;
+    private CentroCosto centroCostoInstance;
 
     private String accion;
 
@@ -197,20 +197,20 @@ public class EmpresaController implements Serializable {
         this.accion = accion;
     }
 
-    public Dependencia getDependenciaInstance() {
-        return dependenciaInstance;
+    public CentroCosto getCentroCostoInstance() {
+        return centroCostoInstance;
     }
 
-    public void setDependenciaInstance(Dependencia dependenciaInstance) {
-        this.dependenciaInstance = dependenciaInstance;
+    public void setCentroCostoInstance(CentroCosto centroCostoInstance) {
+        this.centroCostoInstance = centroCostoInstance;
     }
 
-    public List<Dependencia> getDependenciaList() {
-        return dependenciaList;
+    public List<CentroCosto> getCentroCostoList() {
+        return centroCostoList;
     }
 
-    public void setDependenciaList(List<Dependencia> dependenciaList) {
-        this.dependenciaList = dependenciaList;
+    public void setCentroCostoList(List<CentroCosto> centroCostoList) {
+        this.centroCostoList = centroCostoList;
     }
 
     public Long getJefeId() {
@@ -342,7 +342,7 @@ public class EmpresaController implements Serializable {
 
         try {
             cargoList = empresaFacade.buscarCargos(this.seleccionado.getId());
-            dependenciaList = empresaFacade.buscarDependencias(this.seleccionado.getId());
+            centroCostoList = empresaFacade.buscarCentroCostos(this.seleccionado.getId());
         } catch (Exception e) {
             throw e;
         }
@@ -392,94 +392,52 @@ public class EmpresaController implements Serializable {
         }
     }
 
-    public void crearDependencia() {
+    public void crearCentroCosto() {
         this.accion = "Grabar";
-        this.dependenciaInstance = new Dependencia();
+        this.centroCostoInstance = new CentroCosto();
         this.jefeList = terceroFacade.findAll();
     }
 
-    public void seleccionarDependencia(Dependencia depen) {
+    public void seleccionarCentroCosto(CentroCosto centroCosto) {
         this.accion = "Actualizar";
-        this.dependenciaInstance = depen;
-        if (this.dependenciaInstance.getJefe() != null) {
-            this.jefeId = this.dependenciaInstance.getJefe().getId();
+        this.centroCostoInstance = centroCosto;
+        if (this.centroCostoInstance.getJefe() != null) {
+            this.jefeId = this.centroCostoInstance.getJefe().getId();
         }
         this.jefeList = terceroFacade.findAll();
     }
 
-    public void registraDependencia() throws Exception {
+    public void registraCentroCosto() throws Exception {
 
         try {
-            dependenciaInstance.setEmpresa(seleccionado);
-            dependenciaInstance.setJefe(terceroFacade.find(jefeId));
+            centroCostoInstance.setEmpresa(seleccionado);
+            centroCostoInstance.setJefe(terceroFacade.find(jefeId));
 
             if (accion.equals("Grabar")) {
-                dependenciaFacade.create(dependenciaInstance);
+                centroCostoFacade.create(centroCostoInstance);
             } else if (accion.equals("Actualizar")) {
-                dependenciaFacade.edit(dependenciaInstance);
+                centroCostoFacade.edit(centroCostoInstance);
             }
-
         } catch (Exception e) {
             throw e;
         } finally {
-            dependenciaList = empresaFacade.buscarDependencias(seleccionado.getId());
+            centroCostoList = empresaFacade.buscarCentroCostos(seleccionado.getId());
         }
 
     }
 
-    public void eliminarDependencia() {
+    public void eliminarCentroCosto() {
 
         try {
-            dependenciaFacade.remove(dependenciaInstance);
+            centroCostoFacade.remove(centroCostoInstance);
             this.jefeId = null;
-            dependenciaList = empresaFacade.buscarDependencias(seleccionado.getId());
+            centroCostoList = empresaFacade.buscarCentroCostos(seleccionado.getId());
 
         } catch (Exception e) {
             System.err.println("Error" + e);
         } finally {
 
         }
-    }
-
-    public void cargarDepartamento() {
-        System.out.println("Cargando");
-
-        System.out.println("Cargandolllololo");
-
-        String csvFile =  "/home/jdmp/programacion/hermes/src/main/webapp/departamento.csv";
-        BufferedReader br = null;
-        String line = "";
-        String cvsSplitBy = ",";
-
-        System.out.println("Iniciando cargue....");
-        
-        try {
-
-            br = new BufferedReader(new FileReader(csvFile));
-            while ((line = br.readLine()) != null) {
-
-                // use comma as separator
-                String[] departamento = line.split(cvsSplitBy);
-                
-                System.out.println("Departamento [codigo= " + departamento[0] + " , nombre=" + departamento[1] + "]");
-
-            }
-
-        } catch (FileNotFoundException e) {
-            System.err.println("Error archivo no encontrado" + e);
-
-        } catch (IOException e) {
-            System.err.println("Error no se porque" + e);
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    System.err.println("Error cerrando archivo...d" + e);
-                }
-            }
-        }
-
     }
 
 }

@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * @author jdmp
+ * @author jkelsy
  */
 @Entity
 @Table(name = "tabla_retencion_documental")
@@ -54,9 +54,9 @@ public class TablaRetencionDocumental implements Serializable {
     @Basic
     private Boolean seleccion;
 
-    @ManyToOne(targetEntity = Dependencia.class)
-    @JoinColumn(name = "DEPEN_ID")
-    private Dependencia dependencia;
+    @ManyToOne(targetEntity = CentroCosto.class)
+    @JoinColumn(name = "CCOSTO_ID")
+    private CentroCosto centroCosto;
 
     @ManyToOne(targetEntity = SubSerie.class)
     @JoinColumn(name = "SUB_SERIE_ID")
@@ -126,12 +126,12 @@ public class TablaRetencionDocumental implements Serializable {
         this.seleccion = seleccion;
     }
 
-    public Dependencia getDependencia() {
-        return this.dependencia;
+    public CentroCosto getCentroCosto() {
+        return this.centroCosto;
     }
 
-    public void setDependencia(Dependencia dependencia) {
-        this.dependencia = dependencia;
+    public void setCentroCosto(CentroCosto centroCosto) {
+        this.centroCosto = centroCosto;
     }
 
     public SubSerie getSubSerie() {

@@ -83,47 +83,4 @@ public class Inicio {
         System.out.println("ajshkjashkj");
 
     }
-
-        public void cargarDepartamento() {
-        System.out.println("Cargando");
-
-        System.out.println("Cargandolllololo");
-
-        String csvFile =  "/home/jdmp/programacion/hermes/src/main/webapp/departamento.csv";
-        BufferedReader br = null;
-        String line = "";
-        String cvsSplitBy = ",";
-
-        System.out.println("Iniciando cargue....");
-        
-        try {
-
-            br = new BufferedReader(new FileReader(csvFile));
-            while ((line = br.readLine()) != null) {
-
-                // use comma as separator
-                String[] departamento = line.split(cvsSplitBy);
-                
-                System.out.println("Departamento [codigo= " + departamento[0] + " , nombre=" + departamento[1] + "]");
-
-            }
-
-        } catch (FileNotFoundException e) {
-            System.err.println("Error archivo no encontrado" + e);
-
-        } catch (IOException e) {
-            System.err.println("Error no se porque" + e);
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    System.err.println("Error cerrando archivo...d" + e);
-                }
-            }
-        }
-
-    }
-
-
 }

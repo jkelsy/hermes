@@ -6,7 +6,7 @@
 package com.sgd.hermes.business;
 
 import com.sgd.hermes.model.Cargo;
-import com.sgd.hermes.model.Dependencia;
+import com.sgd.hermes.model.CentroCosto;
 import com.sgd.hermes.model.Empresa;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -45,19 +45,19 @@ public class EmpresaFacade extends AbstractFacade<Empresa> {
     }
    
 
-    public List<Dependencia> buscarDependencias(Long empId) throws Exception{
-        List<Dependencia> dependenciaList = null;
+    public List<CentroCosto> buscarCentroCostos(Long empId) throws Exception{
+        List<CentroCosto> centroCostoList = null;
         
         try {
-            String jpql = " FROM Dependencia d WHERE d.empresa.id = ?1";
+            String jpql = " FROM CentroCosto cc WHERE cc.empresa.id = ?1";
             Query query = em.createQuery(jpql);
             query.setParameter(1, empId);
-            dependenciaList = query.getResultList();
+            centroCostoList = query.getResultList();
         } catch (Exception e) {
              System.err.println("ERRROROROORO"+e.getMessage());
             throw e;
         }
-        return dependenciaList;
+        return centroCostoList;
     }
 
 

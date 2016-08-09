@@ -5,14 +5,20 @@
  */
 package com.sgd.hermes.business;
 
-import com.sgd.hermes.model.Dependencia;
+import com.sgd.hermes.model.Cargo;
+import com.sgd.hermes.model.CentroCosto;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-
+/**
+ *
+ * @author jkelsy
+ */
 @Stateless
-public class DependenciaFacade extends AbstractFacade<Dependencia> {
+public class CentroCostoFacade extends AbstractFacade<CentroCosto> {
 
     @PersistenceContext(unitName = "HermesPU")
     private EntityManager em;
@@ -22,9 +28,8 @@ public class DependenciaFacade extends AbstractFacade<Dependencia> {
         return em;
     }
 
-    public DependenciaFacade() {
-        super(Dependencia.class);
+    public CentroCostoFacade() {
+        super(CentroCosto.class);
     }
-
-   
+    
 }
