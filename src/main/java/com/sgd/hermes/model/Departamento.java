@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -17,6 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "departamento")
+@NamedQuery(name = "Departamento.findByCodigo", query = "Select e from Departamento e WHERE e.codigo = :codigo")
 public class Departamento implements Serializable {
 
     @Column(name = "dpto_id", unique = true)

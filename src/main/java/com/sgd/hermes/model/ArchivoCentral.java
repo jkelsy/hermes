@@ -60,12 +60,8 @@ public class ArchivoCentral implements Serializable {
     private String numeroDocumento;
 
     @ManyToOne(targetEntity = Usuario.class)
-    @JoinColumn(name = "USR_PERSONA_ID")
+    @JoinColumn(name = "TERCERO_ID")
     private Usuario creadoPor;
-
-    @ManyToOne(targetEntity = Usuario.class)
-    @JoinColumn(name = "USR_CREA_ID")
-    private Usuario persona;
 
     @ManyToOne(targetEntity = TipoPreservacion.class)
     @JoinColumn(name = "TP_PRESERVA_ID")
@@ -157,14 +153,6 @@ public class ArchivoCentral implements Serializable {
 
     public void setCreadoPor(Usuario creadoPor) {
         this.creadoPor = creadoPor;
-    }
-
-    public Usuario getPersona() {
-        return this.persona;
-    }
-
-    public void setPersona(Usuario persona) {
-        this.persona = persona;
     }
 
     public TipoPreservacion getTipoPreservacion() {
