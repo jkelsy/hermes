@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="/plantilla.xhtml">
+            <ui:define name="contentHeader">
+
+                <h1>
+                    <small>Divipola</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                    <li class="active">Here</li>
+                </ol>
+            </ui:define>
+            <ui:define name="content">
+                <h:form prependId="false" enctype="multipart/form-data">
+                    Seleccina el archivo de la DIVIPOLA:
+                    <br/>
+                    <h:inputFile id="uploadFile" value="#{configuracionController.divipola}"/>
+                    <br/>
+                    <h:commandButton action="#{configuracionController.cargarDivipola()}" value="Upload File"/>
+                </h:form>    
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
