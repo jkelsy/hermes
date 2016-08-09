@@ -13,7 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -26,7 +25,6 @@ public class Empresa implements Serializable {
     @Column(name = "emp_id", unique = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name = "emp_id")
     private Long id;
 
     @Column(name = "emp_radicado_salida")

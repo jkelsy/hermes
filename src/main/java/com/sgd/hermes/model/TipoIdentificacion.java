@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -23,7 +22,6 @@ public class TipoIdentificacion implements Serializable {
     @Column(name = "tpid_id", unique = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name = "tpid_id")
     private Long id;
 
     @Column(name = "tpid_codigo")

@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -25,7 +24,6 @@ public class Tercero implements Serializable {
     @Column(name = "ter_id", unique = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name = "ter_id")
     private Long id;
 
     @Column(name = "ter_apellido2")

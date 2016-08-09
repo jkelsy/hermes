@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -25,7 +24,6 @@ public class Municipio implements Serializable {
     @Column(name = "mun_id", unique = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name = "mun_id")
     private Long id;
 
     @Column(name = "mun_codigo")
