@@ -681,6 +681,10 @@
                 <jpa:bv/>
                 <jpa:column name="arch_nombre" unique="false" nullable="true" insertable="true" updatable="true" length="255"/>
             </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="extension" id="_1470785767668921">
+                <jpa:bv/>
+                <jpa:column name="archivo_extension" unique="false" nullable="true" insertable="true" updatable="true" length="255"/>
+            </jpa:basic>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470784409235" visibile="true" name="tipoArchivo" id="_1470784633185861">
                 <jpa:join-column name="TP_ARCHIVO_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
@@ -698,6 +702,9 @@
         </jpa:nq>
         <jpa:nq e="false" name="Archivo.findByTipo">
             <jpa:query>Select a from Archivo a where a.tipo=:tipo</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Archivo.findByExtension">
+            <jpa:query>Select a from Archivo a where a.extension=:extension</jpa:query>
         </jpa:nq>
         <jpa:table name="archivo"/>
     </jpa:entity>
@@ -731,7 +738,7 @@
             <jpa:basic attribute-type="java.sql.Date" visibile="true" name="fecha" id="_1470785369656879">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1470328576765246" visibile="true" name="usuario" id="_1470785527170880">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1470328576765246" visibile="true" name="creadoPor" id="_1470785527170880">
                 <jpa:join-column name="CREADO_POR_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
             <jpa:many-to-one primaryKey="false" connected-entity-id="_1470424354330" visibile="true" name="archivoCentral" id="_1470785544234881">
@@ -808,7 +815,7 @@
                 <Bounds x="289.0" y="572.0" width="181.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470424021830">
-                <Bounds x="597.0" y="550.0" width="290.0" height="258.0"/>
+                <Bounds x="561.0" y="535.0" width="290.0" height="258.0"/>
             </shape>
             <shape elementRef="_1470424354330">
                 <Bounds x="971.0" y="17.0" width="227.0" height="318.0"/>
@@ -826,7 +833,7 @@
                 <Bounds x="941.0" y="754.0" width="237.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470784190384">
-                <Bounds x="1004.0" y="900.0" width="147.0" height="118.0"/>
+                <Bounds x="960.0" y="910.0" width="147.0" height="138.0"/>
             </shape>
             <shape elementRef="_1470784409235">
                 <Bounds x="1212.0" y="942.0" width="177.0" height="86.0"/>
