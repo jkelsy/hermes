@@ -10,7 +10,7 @@
 
         <ui:composition template="/plantilla.xhtml">
             <ui:define name="contentHeader">
-
+                
                 <h1>
                     <small>Divipola</small>
                 </h1>
@@ -20,10 +20,10 @@
                 </ol>
             </ui:define>
             <ui:define name="content">
-                <h:form prependId="false" enctype="multipart/form-data">
+                <h:form>
                     Seleccina el archivo de la DIVIPOLA:
-                    <br/>
-                    <h:inputFile id="uploadFile" value="#{configuracionController.divipola}"/>
+                    <br/>                   
+                    <p:fileUpload value="#{configuracionController.divipola}" mode="simple" skinSimple="true"/>
                     <br/>
                     <h:commandButton action="#{configuracionController.cargarDivipola()}" value="Upload File"/>
                 </h:form>    
