@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -19,6 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tabla_retencion_documental")
+@NamedQuery(name = "TablaRetencionDocumental.findByEmpresa", query = "Select e from TablaRetencionDocumental e where e.centroCosto.empresa.id = :empresa_id")
 public class TablaRetencionDocumental implements Serializable {
 
     @Column(name = "trd_id", unique = true)

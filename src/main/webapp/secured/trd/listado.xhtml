@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="/plantilla.xhtml">
+            <ui:define name="contentHeader">
+                
+                <h1>
+                    <small>Tabla de Retención Documental</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                    <li class="active">Here</li>
+                </ol>
+            </ui:define>
+            <ui:define name="content">
+                <h:form>
+                    <p:selectOneMenu  id="selectEmpresa" filter="true" filterMatchMode="contains" value="#{trdController.empresa}">
+                        
+                        <p:ajax listener="#{trdController.actualizarTRDPorEmpresa()}" update="tablaTRD"  />
+                        <f:selectItems  value="#{trdController.empresas}" var="empresa"
+                                        itemLabel="#{empresa.nombre}" itemValue="#{empresa}"/>
+                    </p:selectOneMenu>
+                                  
+                    <p:dataTable var="trd" value="#{trdController.trds}" id="tablaTRD">
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nit" />
+                            </f:facet>
+                            <h:outputText value="#{trd.descrpcion}" />
+                        </p:column>
+
+                                
+
+                    </p:dataTable>
+                </h:form>    
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

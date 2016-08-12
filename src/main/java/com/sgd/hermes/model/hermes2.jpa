@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="com.sgd.hermes.model" v="2.1" sm="false" xs="false" id="_1470328576751241" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
-    <jpa:entity xre="false" compositePrimaryKeyClass="DepartamentoPK" abs="false" class="Departamento" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576758242">
+    <jpa:entity xre="false" compositePrimaryKeyClass="DepartamentoPK" abs="false" class="Departamento" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576758242">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -24,7 +24,7 @@
         </jpa:nq>
         <jpa:table name="departamento"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="UsuarioPK" abs="false" class="Usuario" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576765246">
+    <jpa:entity xre="false" compositePrimaryKeyClass="UsuarioPK" abs="false" class="Usuario" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576765246">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -45,7 +45,7 @@
         </jpa:attributes>
         <jpa:table name="sec_usuario"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="PobladoPK" abs="false" class="Poblado" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576771250">
+    <jpa:entity xre="false" compositePrimaryKeyClass="PobladoPK" abs="false" class="Poblado" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576771250">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -69,7 +69,7 @@
         </jpa:attributes>
         <jpa:table name="poblado"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="PermisoPK" abs="false" class="Permiso" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576780255">
+    <jpa:entity xre="false" compositePrimaryKeyClass="PermisoPK" abs="false" class="Permiso" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576780255">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -84,7 +84,7 @@
         </jpa:attributes>
         <jpa:table name="sec_permiso"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TerceroPK" abs="false" class="Tercero" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576795259">
+    <jpa:entity xre="false" compositePrimaryKeyClass="TerceroPK" abs="false" class="Tercero" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576795259">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -128,7 +128,7 @@
         </jpa:attributes>
         <jpa:table name="tercero"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="CargoPK" abs="false" class="Cargo" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576805269">
+    <jpa:entity xre="false" compositePrimaryKeyClass="CargoPK" abs="false" class="Cargo" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576805269">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -152,7 +152,7 @@
         </jpa:attributes>
         <jpa:table name="cargo"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="EmpresaPK" abs="false" class="Empresa" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576816274">
+    <jpa:entity xre="false" compositePrimaryKeyClass="EmpresaPK" abs="false" class="Empresa" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576816274">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -231,7 +231,7 @@
         </jpa:attributes>
         <jpa:table name="empresa"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="MunicipioPK" abs="false" class="Municipio" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576824293">
+    <jpa:entity xre="false" compositePrimaryKeyClass="MunicipioPK" abs="false" class="Municipio" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576824293">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -255,7 +255,7 @@
         </jpa:attributes>
         <jpa:table name="municipio"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="RolPK" abs="false" class="Rol" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576831298">
+    <jpa:entity xre="false" compositePrimaryKeyClass="RolPK" abs="false" class="Rol" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576831298">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -272,7 +272,7 @@
         </jpa:attributes>
         <jpa:table name="sec_rol"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="CentroCostoPK" abs="false" class="CentroCosto" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576840301">
+    <jpa:entity xre="false" compositePrimaryKeyClass="CentroCostoPK" abs="false" class="CentroCosto" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576840301">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -307,7 +307,7 @@
         </jpa:attributes>
         <jpa:table name="centro_costo"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TipoIdentificacionPK" abs="false" class="TipoIdentificacion" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576847309">
+    <jpa:entity xre="false" compositePrimaryKeyClass="TipoIdentificacionPK" abs="false" class="TipoIdentificacion" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576847309">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -332,7 +332,7 @@
         </jpa:attributes>
         <jpa:table name="tipo_identificacion"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TipoPreservacionPK" abs="false" class="TipoPreservacion" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470423375582">
+    <jpa:entity xre="false" compositePrimaryKeyClass="TipoPreservacionPK" abs="false" class="TipoPreservacion" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470423375582">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -362,7 +362,7 @@
         </jpa:nq>
         <jpa:table name="tipo_preservacion"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TipoArmarioPK" abs="false" class="TipoArmario" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470423854959">
+    <jpa:entity xre="false" compositePrimaryKeyClass="TipoArmarioPK" abs="false" class="TipoArmario" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470423854959">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -455,24 +455,15 @@
         <jpa:nq e="false" name="TablaRetencionDocumental.findByEnMicro">
             <jpa:query>Select t from TablaRetencionDocumental t where t.enMicro=:enMicro</jpa:query>
         </jpa:nq>
-        <jpa:nq e="false" name="TablaRetencionDocumental.findByDescrpcion">
-            <jpa:query>Select t from TablaRetencionDocumental t where t.descrpcion=:descrpcion</jpa:query>
-        </jpa:nq>
         <jpa:nq e="false" name="TablaRetencionDocumental.findBySeleccion">
             <jpa:query>Select t from TablaRetencionDocumental t where t.seleccion=:seleccion</jpa:query>
         </jpa:nq>
-        <jpa:nq e="false" name="TablaRetencionDocumental.findByAttribute7">
-            <jpa:query>Select t from TablaRetencionDocumental t where t.attribute7=:attribute7</jpa:query>
-        </jpa:nq>
-        <jpa:nq e="false" name="TablaRetencionDocumental.findByAttribute8">
-            <jpa:query>Select t from TablaRetencionDocumental t where t.attribute8=:attribute8</jpa:query>
-        </jpa:nq>
-        <jpa:nq e="false" name="TablaRetencionDocumental.findByAttribute9">
-            <jpa:query>Select t from TablaRetencionDocumental t where t.attribute9=:attribute9</jpa:query>
+        <jpa:nq e="true" name="TablaRetencionDocumental.findByEmpresa">
+            <jpa:query>Select e from TablaRetencionDocumental e where e.centroCosto.empresa.id = :empresa_id</jpa:query>
         </jpa:nq>
         <jpa:table name="tabla_retencion_documental"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="ArchivoCentralPK" abs="false" class="ArchivoCentral" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470424354330">
+    <jpa:entity xre="false" compositePrimaryKeyClass="ArchivoCentralPK" abs="false" class="ArchivoCentral" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470424354330">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -565,7 +556,7 @@
         </jpa:nq>
         <jpa:table name="archivo_central"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="SeriePK" abs="false" class="Serie" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470428376862">
+    <jpa:entity xre="false" compositePrimaryKeyClass="SeriePK" abs="false" class="Serie" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470428376862">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -594,7 +585,7 @@
         </jpa:nq>
         <jpa:table name="serie"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="SubSeriePK" abs="false" class="SubSerie" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470428487858">
+    <jpa:entity xre="false" compositePrimaryKeyClass="SubSeriePK" abs="false" class="SubSerie" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470428487858">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -627,7 +618,7 @@
         </jpa:nq>
         <jpa:table name="sub_serie"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TipoDocumentalPK" abs="false" class="TipoDocumental" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470782499488">
+    <jpa:entity xre="false" compositePrimaryKeyClass="TipoDocumentalPK" abs="false" class="TipoDocumental" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470782499488">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -650,7 +641,7 @@
         </jpa:nq>
         <jpa:table name="tipo_documental"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TRDTipoDocumentalPK" abs="false" class="TRDTipoDocumental" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470783288311">
+    <jpa:entity xre="false" compositePrimaryKeyClass="TRDTipoDocumentalPK" abs="false" class="TRDTipoDocumental" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470783288311">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -672,7 +663,7 @@
         </jpa:nq>
         <jpa:table name="trd_tipo_documental"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="ArchivoPK" abs="false" class="Archivo" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470784190384">
+    <jpa:entity xre="false" compositePrimaryKeyClass="ArchivoPK" abs="false" class="Archivo" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470784190384">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -708,7 +699,7 @@
         </jpa:nq>
         <jpa:table name="archivo"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TipoArchivoPK" abs="false" class="TipoArchivo" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470784409235">
+    <jpa:entity xre="false" compositePrimaryKeyClass="TipoArchivoPK" abs="false" class="TipoArchivo" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470784409235">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -731,7 +722,7 @@
         </jpa:nq>
         <jpa:table name="tipo_archivo"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleArchivoCentralPK" abs="false" class="DetalleArchivoCentral" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470785273823">
+    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleArchivoCentralPK" abs="false" class="DetalleArchivoCentral" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470785273823">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
