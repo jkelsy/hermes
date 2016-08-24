@@ -21,11 +21,11 @@
             </ui:define>
             <ui:define name="content">
                 <h:form>
-                    <p:selectOneMenu  id="selectEmpresa" filter="true" filterMatchMode="contains" value="#{trdController.empresa}">
+                    <p:selectOneMenu  id="selectEmpresa" filter="true" filterMatchMode="contains" value="#{trdController.empresaId}">
                         
                         <p:ajax listener="#{trdController.actualizarTRDPorEmpresa()}" update="tablaTRD"  />
-                        <f:selectItems  value="#{trdController.empresas}" var="empresa"
-                                        itemLabel="#{empresa.nombre}" itemValue="#{empresa}"/>
+                        <f:selectItems  value="#{trdController.empresas}" var="emp"
+                                        itemLabel="#{emp.nombre}" itemValue="#{emp.id}"/>
                     </p:selectOneMenu>
                                   
                     <p:dataTable var="trd" value="#{trdController.trds}" id="tablaTRD">
