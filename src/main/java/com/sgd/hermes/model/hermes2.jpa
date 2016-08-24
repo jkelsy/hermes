@@ -314,7 +314,7 @@
         <jpa:nq e="true" name="CentroCosto.findByNombre">
             <jpa:query>Select c from CentroCosto c WHERE c.nombre =:nombre</jpa:query>
         </jpa:nq>
-        <jpa:nq e="true" name="CentroCosto.findByEmpresaAndNombre">
+        <jpa:nq e="false" name="CentroCosto.findByEmpresaAndNombre">
             <jpa:query>Select e from CentroCosto e WHERE e.empresa.id =:empresa.id AND e.nombre =:nombre</jpa:query>
         </jpa:nq>
         <jpa:table name="centro_costo"/>

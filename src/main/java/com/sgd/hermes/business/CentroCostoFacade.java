@@ -44,7 +44,7 @@ public class CentroCostoFacade extends AbstractFacade<CentroCosto> {
         return lista.get(0);
     }
     
-     
+     /*
       public CentroCosto findByEmpresaAndNombre(Empresa empresa,String nombre){
          List<CentroCosto> lista = em.createNamedQuery("CentroCosto.findByEmpresaAndNombre", CentroCosto.class)
                 .setParameter("empresa", empresa)
@@ -57,6 +57,6 @@ public class CentroCostoFacade extends AbstractFacade<CentroCosto> {
 
         return lista.get(0);
     }
-    
+    */
     
 }

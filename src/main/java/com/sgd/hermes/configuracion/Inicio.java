@@ -167,7 +167,8 @@ public class Inicio {
              empresaFacade.create(empresa2);
          }
              
-         CentroCosto centroCosto2 = centroCostoFacade.findByEmpresaAndNombre(empresa2,  "Contabilidad");
+         //CentroCosto centroCosto2 = centroCostoFacade.findByEmpresaAndNombre(empresa2,  "Contabilidad");
+         CentroCosto centroCosto2 = centroCostoFacade.findByNombre("Contabilidad");
          if (centroCosto2 == null){
              centroCosto2 = new CentroCosto();
              centroCosto2.setCodigo("002");
@@ -262,7 +263,8 @@ public class Inicio {
              empresaFacade.create(empresa);
          }
              
-         CentroCosto centroCosto = centroCostoFacade.findByEmpresaAndNombre(empresa,  "Sistemas");
+         //CentroCosto centroCosto = centroCostoFacade.findByEmpresaAndNombre(empresa,  "Sistemas");
+         CentroCosto centroCosto = centroCostoFacade.findByNombre("Sistemas");
          if (centroCosto == null){
              centroCosto = new CentroCosto();
              centroCosto.setCodigo("001");
