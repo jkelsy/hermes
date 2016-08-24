@@ -35,6 +35,9 @@ public class TRDController implements Serializable {
      
     private List<TablaRetencionDocumental> trds;
     
+    private Long empresaId;
+    
+    
     public TRDController() {
     }  
     
@@ -43,8 +46,8 @@ public class TRDController implements Serializable {
     }
     
     public void actualizarTRDPorEmpresa() {
-        System.out.println("Empresa"+empresa);
-        trds =  trdf.findByEmpresa(empresa.getId());
+        //System.out.println("Empresa"+empresa);
+        trds =  trdf.findByEmpresa(empresaId);
     }
     
     public List<Empresa> getEmpresas(){
@@ -73,6 +76,14 @@ public class TRDController implements Serializable {
 
     public void setTrds(List<TablaRetencionDocumental> trds) {
         this.trds = trds;
+    }
+
+    public Long getEmpresaId() {
+        return empresaId;
+    }
+
+    public void setEmpresaId(Long empresaId) {
+        this.empresaId = empresaId;
     }
     
     
