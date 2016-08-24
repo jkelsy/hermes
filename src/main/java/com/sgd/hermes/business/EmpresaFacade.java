@@ -61,4 +61,19 @@ public class EmpresaFacade extends AbstractFacade<Empresa> {
     }
 
 
+     public Empresa findByNit(String nit){
+        List<Empresa> lista = em.createNamedQuery("Empresa.findByNit", Empresa.class)
+                .setParameter("nit", nit)
+                .getResultList();
+        
+        
+        if (lista == null || lista.isEmpty()) {
+            return null;
+        }
+
+        return lista.get(0);
+    }
+    
+  
+    
 }

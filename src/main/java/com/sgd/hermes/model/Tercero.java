@@ -12,13 +12,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- * @author jkelsy
+ * @author jdmp
  */
 @Entity
 @Table(name = "tercero")
+@NamedQuery(name = "Tercero.findByIdentificacion", query = "Select t from Tercero t WHERE t.identificacion=:identificacion")
 public class Tercero implements Serializable {
 
     @Column(name = "ter_id", unique = true)

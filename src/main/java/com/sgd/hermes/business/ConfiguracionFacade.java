@@ -5,7 +5,6 @@
  */
 package com.sgd.hermes.business;
 
-import com.sgd.hermes.model.Cargo;
 import com.sgd.hermes.model.Departamento;
 import com.sgd.hermes.model.Municipio;
 import com.sgd.hermes.model.Poblado;
@@ -13,13 +12,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.servlet.http.Part;
 
 /**

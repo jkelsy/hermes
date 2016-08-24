@@ -10,13 +10,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- * @author jkelsy
+ * @author jdmp
  */
 @Entity
 @Table(name = "serie")
+@NamedQuery(name = "Serie.findByCodigo", query = "Select s from Serie s where s.codigo=:codigo")
 public class Serie implements Serializable {
 
     @Column(name = "serie_id", unique = true)

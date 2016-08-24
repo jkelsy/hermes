@@ -5,13 +5,12 @@
  */
 package com.sgd.hermes.business;
 
-import com.sgd.hermes.model.Cargo;
 import com.sgd.hermes.model.CentroCosto;
+import com.sgd.hermes.model.Empresa;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 /**
  *
@@ -31,5 +30,33 @@ public class CentroCostoFacade extends AbstractFacade<CentroCosto> {
     public CentroCostoFacade() {
         super(CentroCosto.class);
     }
+    
+     public CentroCosto findByNombre(String nombre){
+         List<CentroCosto> lista = em.createNamedQuery("CentroCosto.findByNombre", CentroCosto.class)
+                .setParameter("nombre", nombre)
+                .getResultList();
+        
+        
+        if (lista == null || lista.isEmpty()) {
+            return null;
+        }
+
+        return lista.get(0);
+    }
+    
+     
+      public CentroCosto findByEmpresaAndNombre(Empresa empresa,String nombre){
+         List<CentroCosto> lista = em.createNamedQuery("CentroCosto.findByEmpresaAndNombre", CentroCosto.class)
+                .setParameter("empresa", empresa)
+                .setParameter("nombre", nombre)
+                .getResultList();
+         
+          if (lista == null || lista.isEmpty()) {
+            return null;
+        }
+
+        return lista.get(0);
+    }
+    
     
 }

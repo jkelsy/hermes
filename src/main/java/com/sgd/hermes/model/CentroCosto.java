@@ -12,13 +12,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- * @author jkelsy
+ * @author jdmp
  */
 @Entity
 @Table(name = "centro_costo")
+@NamedQueries({
+    @NamedQuery(name = "CentroCosto.findByNombre", query = "Select c from CentroCosto c WHERE c.nombre =:nombre"),
+    @NamedQuery(name = "CentroCosto.findByEmpresaAndNombre", query = "Select e from CentroCosto e WHERE e.empresa.id =:empresa.id AND e.nombre =:nombre")})
 public class CentroCosto implements Serializable {
 
     @Column(name = "ccosto_id", unique = true)

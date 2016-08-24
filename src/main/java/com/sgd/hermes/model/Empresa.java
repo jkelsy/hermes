@@ -13,13 +13,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- * @author jkelsy
+ * @author jdmp
  */
 @Entity
 @Table(name = "empresa")
+@NamedQuery(name = "Empresa.findByNit", query = "Select e from Empresa e WHERE e.nit =:nit")
 public class Empresa implements Serializable {
 
     @Column(name = "emp_id", unique = true)

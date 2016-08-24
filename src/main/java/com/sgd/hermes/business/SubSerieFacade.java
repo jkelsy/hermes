@@ -5,7 +5,7 @@
  */
 package com.sgd.hermes.business;
 
-import com.sgd.hermes.model.TipoIdentificacion;
+import com.sgd.hermes.model.SubSerie;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  * @author jkelsy
  */
 @Stateless
-public class TipoIdentificacionFacade extends AbstractFacade<TipoIdentificacion> {
+public class SubSerieFacade extends AbstractFacade<SubSerie> {
 
     @PersistenceContext(unitName = "HermesPU")
     private EntityManager em;
@@ -26,18 +26,16 @@ public class TipoIdentificacionFacade extends AbstractFacade<TipoIdentificacion>
         return em;
     }
 
-    public TipoIdentificacionFacade() {
-        super(TipoIdentificacion.class);
+    public SubSerieFacade() {
+        super(SubSerie.class);
     }
     
-    
-            
-    public TipoIdentificacion findByCodigo(String codigo){
-        List<TipoIdentificacion> lista =  em.createNamedQuery("TipoIdentificacion.findByCodigo", TipoIdentificacion.class)
+     public SubSerie findByCodigo(String codigo){
+         List<SubSerie> lista =  em.createNamedQuery("SubSerie.findByCodigo", SubSerie.class)
                 .setParameter("codigo", codigo)
                 .getResultList();
-        
-         if (lista == null || lista.isEmpty()) {
+         
+          if (lista == null || lista.isEmpty()) {
             return null;
         }
 

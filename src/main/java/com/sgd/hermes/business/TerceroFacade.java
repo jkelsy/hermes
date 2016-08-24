@@ -44,4 +44,18 @@ public class TerceroFacade extends AbstractFacade<Tercero> {
     }    
     
     
+     public Tercero findByIdentificacion(String identificacion){
+        
+         List<Tercero> lista =  em.createNamedQuery("Tercero.findByIdentificacion", Tercero.class)
+                .setParameter("identificacion", identificacion)
+                .getResultList();
+        
+         if (lista == null || lista.isEmpty()) {
+            return null;
+        }
+
+        return lista.get(0);
+        
+    }
+    
 }

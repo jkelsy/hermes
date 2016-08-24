@@ -12,13 +12,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- * @author jkelsy
+ * @author jdmp
  */
 @Entity
 @Table(name = "sub_serie")
+@NamedQuery(name = "SubSerie.findByCodigo", query = "Select s from SubSerie s where s.codigo=:codigo")
 public class SubSerie implements Serializable {
 
     @Column(name = "sub_serie_id")

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="com.sgd.hermes.model" v="2.1" sm="false" xs="false" id="_1470328576751241" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="com.sgd.hermes.model" v="2.1" persistenceUnitName="HermesPU" sm="false" xs="false" id="_1470328576751241" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
     <jpa:entity xre="false" compositePrimaryKeyClass="DepartamentoPK" abs="false" class="Departamento" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576758242">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
@@ -126,6 +126,9 @@
                 <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
+        <jpa:nq e="true" name="Tercero.findByIdentificacion">
+            <jpa:query>Select t from Tercero t WHERE t.identificacion=:identificacion</jpa:query>
+        </jpa:nq>
         <jpa:table name="tercero"/>
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="CargoPK" abs="false" class="Cargo" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576805269">
@@ -229,6 +232,9 @@
                 <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
+        <jpa:nq e="true" name="Empresa.findByNit">
+            <jpa:query>Select e from Empresa e WHERE e.nit =:nit</jpa:query>
+        </jpa:nq>
         <jpa:table name="empresa"/>
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="MunicipioPK" abs="false" class="Municipio" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576824293">
@@ -272,7 +278,7 @@
         </jpa:attributes>
         <jpa:table name="sec_rol"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="CentroCostoPK" abs="false" class="CentroCosto" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576840301">
+    <jpa:entity xre="false" compositePrimaryKeyClass="CentroCostoPK" abs="false" class="CentroCosto" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470328576840301">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -305,6 +311,12 @@
                 <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
+        <jpa:nq e="true" name="CentroCosto.findByNombre">
+            <jpa:query>Select c from CentroCosto c WHERE c.nombre =:nombre</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="CentroCosto.findByEmpresaAndNombre">
+            <jpa:query>Select e from CentroCosto e WHERE e.empresa.id =:empresa.id AND e.nombre =:nombre</jpa:query>
+        </jpa:nq>
         <jpa:table name="centro_costo"/>
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="TipoIdentificacionPK" abs="false" class="TipoIdentificacion" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470328576847309">
@@ -330,6 +342,9 @@
                 <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
+        <jpa:nq e="true" name="TipoIdentificacion.findByCodigo">
+            <jpa:query>Select t from TipoIdentificacion t WHERE t.codigo =:codigo</jpa:query>
+        </jpa:nq>
         <jpa:table name="tipo_identificacion"/>
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="TipoPreservacionPK" abs="false" class="TipoPreservacion" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470423375582">
@@ -392,7 +407,7 @@
         </jpa:nq>
         <jpa:table name="tipo_armario"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TablaRetencionDocumentalPK" abs="false" class="TablaRetencionDocumental" visibile="true" minimized="false" rootElement="_1470328576751241" id="_1470424021830">
+    <jpa:entity xre="false" compositePrimaryKeyClass="TablaRetencionDocumentalPK" abs="false" class="TablaRetencionDocumental" visibile="true" gen="false" minimized="false" rootElement="_1470328576751241" id="_1470424021830">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -577,7 +592,7 @@
         <jpa:nq e="false" name="Serie.findAll">
             <jpa:query>Select e from Serie e</jpa:query>
         </jpa:nq>
-        <jpa:nq e="false" name="Serie.findByCodigo">
+        <jpa:nq e="true" name="Serie.findByCodigo">
             <jpa:query>Select s from Serie s where s.codigo=:codigo</jpa:query>
         </jpa:nq>
         <jpa:nq e="false" name="Serie.findByDescripcion">
@@ -610,7 +625,7 @@
         <jpa:nq e="false" name="SubSerie.findAll">
             <jpa:query>Select e from SubSerie e</jpa:query>
         </jpa:nq>
-        <jpa:nq e="false" name="SubSerie.findByCodigo">
+        <jpa:nq e="true" name="SubSerie.findByCodigo">
             <jpa:query>Select s from SubSerie s where s.codigo=:codigo</jpa:query>
         </jpa:nq>
         <jpa:nq e="false" name="SubSerie.findByDescripcion">
@@ -780,7 +795,7 @@
                 <Bounds x="1296.0" y="572.0" width="153.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470328576795259">
-                <Bounds x="278.0" y="80.0" width="164.0" height="238.0"/>
+                <Bounds x="289.0" y="121.0" width="164.0" height="238.0"/>
             </shape>
             <shape elementRef="_1470328576805269">
                 <Bounds x="-218.0" y="657.0" width="138.0" height="138.0"/>
@@ -804,7 +819,7 @@
                 <Bounds x="597.0" y="308.0" width="218.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470423854959">
-                <Bounds x="289.0" y="572.0" width="181.0" height="106.0"/>
+                <Bounds x="313.0" y="583.0" width="181.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470424021830">
                 <Bounds x="561.0" y="535.0" width="290.0" height="258.0"/>
@@ -813,7 +828,7 @@
                 <Bounds x="971.0" y="17.0" width="227.0" height="318.0"/>
             </shape>
             <shape elementRef="_1470428376862">
-                <Bounds x="410.0" y="956.0" width="133.0" height="106.0"/>
+                <Bounds x="411.0" y="952.0" width="133.0" height="106.0"/>
             </shape>
             <shape elementRef="_1470428487858">
                 <Bounds x="639.0" y="890.0" width="160.0" height="138.0"/>
