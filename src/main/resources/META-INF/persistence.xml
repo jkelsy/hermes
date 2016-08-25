@@ -24,6 +24,7 @@
     <class>com.sgd.hermes.model.Archivo</class>
     <class>com.sgd.hermes.model.TipoArchivo</class>
     <class>com.sgd.hermes.model.DetalleArchivoCentral</class>
+    <class>com.sgd.hermes.model.Documento</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
