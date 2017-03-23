@@ -7,105 +7,18 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
+        <ui:define name="metadata">
+            <f:metadata>
 
+                <f:viewAction action="#{empresaController.crearEmpresa}"  />
+
+            </f:metadata>
+
+        </ui:define>
         <ui:composition template="/plantilla.xhtml">
-
             <ui:define name="content">
-                
-                 <h3>Editar</h3>
-                
-                <h:form>
-                    <p:messages id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="false" showDetail="true"/>
-                    <h:panelGrid columns="2">
-
-                        
-                        <p:outputLabel for="txtDepartamento" value="Departamento"></p:outputLabel>
-                        <p:selectOneMenu  id="txtDepartamento" filter="true" filterMatchMode="contains" value="#{empresaController.departamentoId}">
-
-                            <p:ajax listener="#{empresaController.buscarMunicipio()}" update="txtMunicipio txtPoblado" />
-                            <f:selectItems value="#{empresaController.departamentoList}" var="dpto"
-                                           itemLabel="#{dpto.codigo} | #{dpto.nombre}" itemValue="#{dpto.id}"/>
-                        </p:selectOneMenu>
-
-                        <p:outputLabel for="txtMunicipio" value="Municipio"></p:outputLabel>
-                        <p:selectOneMenu  id="txtMunicipio" filter="true" filterMatchMode="contains" value="#{empresaController.municipioId}">
-
-                            <p:ajax listener="#{empresaController.buscarPoblado()}" update="txtPoblado"  />
-                            <f:selectItems  value="#{empresaController.municipioList}" var="muni"
-                                           itemLabel="#{muni.codigo} | #{muni.nombre}" itemValue="#{muni.id}"/>
-                        </p:selectOneMenu>
-
-
-                        <p:outputLabel for="txtPoblado" value="Poblado"></p:outputLabel>
-                        <p:selectOneMenu  id="txtPoblado" filter="true" filterMatchMode="contains" value="#{empresaController.pobladoId}">
-
-                            <f:selectItems value="#{empresaController.pobladoList}" var="poblado"
-                                           itemLabel="#{poblado.codigo} | #{poblado.nombre}" itemValue="#{poblado.id}"/>
-                        </p:selectOneMenu>
-                        
-                        
-                        <p:outputLabel for="txtRepresentante" value="Representante"></p:outputLabel>
-                        <p:selectOneMenu  id="txtRepresentante" filter="true" filterMatchMode="contains" value="#{empresaController.representanteId}">
-
-                            <f:selectItems value="#{empresaController.representanteList}" var="persona"
-                                           itemLabel="#{persona.apellido1}, #{persona.nombres}" itemValue="#{persona.id}"/>
-
-                        </p:selectOneMenu>
-                        
-                        
-                       <p:outputLabel for="txtNit" value="Nit"></p:outputLabel>
-                        <p:inputText id="txtNit" value="#{empresaController.seleccionado.nit}"></p:inputText>
-
-                        <p:outputLabel for="txtNombre" value="Nombre"></p:outputLabel>
-                        <p:inputText id="txtNombre" value="#{empresaController.seleccionado.nombre}"></p:inputText>
-                        
-                        <p:outputLabel for="txtDireccion" value="Direccion"></p:outputLabel>
-                        <p:inputText id="txtDireccion" value="#{empresaController.seleccionado.direccion}"></p:inputText>
-
-                        <p:outputLabel for="txtTelefono" value="Telefono"></p:outputLabel>
-                        <p:inputText id="txtTelefono" value="#{empresaController.seleccionado.telefono}"></p:inputText>
-
-                        <p:outputLabel for="txtLogo" value="Logo"></p:outputLabel>
-                        <p:inputText id="txtLogo" value="#{empresaController.seleccionado.logo}"></p:inputText>
-                        
-                        <p:outputLabel for="txtLogoFondoCarta" value="Logo Fondo Carta"></p:outputLabel>
-                        <p:inputText id="txtLogoFondoCarta" value="#{empresaController.seleccionado.logoFondoCarta}"></p:inputText>
-                        
-                        <p:outputLabel for="txtLogoUrl" value="Logo Url"></p:outputLabel>
-                        <p:inputText id="txtLogoUrl" value="#{empresaController.seleccionado.logoUrl}"></p:inputText>
-
-                        <p:outputLabel for="txtArchivoRuta" value="Ruta Archivo"></p:outputLabel>
-                        <p:inputText id="txtArchivoRuta" value="#{empresaController.seleccionado.archivoRuta}"></p:inputText>
-
-                        <p:outputLabel for="txtEmail" value="Email"></p:outputLabel>
-                        <p:inputText id="txtEmail" value="#{empresaController.seleccionado.email}"></p:inputText>
-                        
-                        <p:outputLabel for="txtEmailPass" value="Email Pass"></p:outputLabel>
-                        <p:inputText id="txtEmailPass" value="#{empresaController.seleccionado.emailPass}"></p:inputText>
-                        
-                        <p:outputLabel for="txtEmailHost" value="Email Host"></p:outputLabel>
-                        <p:inputText id="txtEmailHost" value="#{empresaController.seleccionado.emailHost}"></p:inputText>
-
-                        <p:outputLabel for="txtEmailPort" value="Email Port"></p:outputLabel>
-                        <p:inputText id="txtEmailPort" value="#{empresaController.seleccionado.emailPort}"></p:inputText>
-
-                        <p:outputLabel for="txtRadicadoEntrada" value="Radicado Entrada"></p:outputLabel>
-                        <p:inputText id="txtRadicadoEntrada" value="#{empresaController.seleccionado.radicadoEntrada}"></p:inputText>
-
-                        <p:outputLabel for="txtRadicadoSalida" value="Radicado Salida"></p:outputLabel>
-                        <p:inputText id="txtRadicadoSalida" value="#{empresaController.seleccionado.radicadoSalida}"></p:inputText>
-
-                        <p:outputLabel for="txtRadicadoInterno" value="Radicado Interno"></p:outputLabel>
-                        <p:inputText id="txtRadicadoInterno" value="#{empresaController.seleccionado.radicadoInterno}"></p:inputText>
-
-                        <p:column/>
-                        <p:commandButton icon="ui-icon-check" value="Grabar" actionListener="#{empresaController.grabar}"
-                                         update="mensaje" action="editar"
-                                         />
-                         
-                    </h:panelGrid>
-                </h:form>    
-                 </ui:define>
+                <ui:include src="form.xhtml"/>
+            </ui:define>
         </ui:composition>     
     </body>
 </html>

@@ -5,8 +5,9 @@
  */
 package com.sgd.hermes.controller;
 
-import com.sgd.hermes.business.CargoFacade;
+
 import com.sgd.hermes.model.Cargo;
+import com.sgd.hermes.model.service.facade.CargoFacade;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;

@@ -20,13 +20,14 @@
                 </ol>
             </ui:define>
             <ui:define name="content">
-                <h:form>
+                <h:form enctype="multipart/form-data">
+                    
                     Seleccina el archivo de la DIVIPOLA:
                     <br/>                   
-                    <p:fileUpload value="#{configuracionController.divipola}" mode="simple" skinSimple="true"/>
+                    <p:fileUpload fileUploadListener="#{configuracionController.handleFileUpload}" skinSimple="true"  />
                     <br/>
-                    <h:commandButton action="#{configuracionController.cargarDivipola()}" value="Upload File"/>
-                </h:form>    
+                    
+                </h:form>       
             </ui:define>
 
         </ui:composition>

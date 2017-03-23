@@ -17,6 +17,11 @@
             </ui:define>
             <ui:define name="content">
                 <p:editor/>  
+                <h:form>
+                    <h:commandLink type="button" action="#{trdController.listado()}" > 
+                        <h:outputText value="A" />
+                    </h:commandLink>
+                </h:form>
             </ui:define>
         </ui:composition>
         <br/>

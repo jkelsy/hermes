@@ -3,7 +3,7 @@
  */
 package com.sgd.hermes.model;
 
-import java.io.Serializable;
+import java.lang.reflect.Field;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,19 +14,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import org.primefaces.util.BeanUtils;
 
 /**
- * @author jkelsy
+ * @author jdmp
  */
 @Entity
 @Table(name = "tabla_retencion_documental")
 @NamedQuery(name = "TablaRetencionDocumental.findByEmpresa", query = "Select e from TablaRetencionDocumental e where e.centroCosto.empresa.id = :empresa_id")
-public class TablaRetencionDocumental implements Serializable {
+public class TablaRetencionDocumental {
 
     @Column(name = "trd_id", unique = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "trd_descripcion")
+    @Basic
+    private String descripcion;
 
     @Column(name = "trd_se_conserva")
     @Basic
@@ -48,10 +53,6 @@ public class TablaRetencionDocumental implements Serializable {
     @Basic
     private Boolean enMicro;
 
-    @Column(name = "trd_descrpcion")
-    @Basic
-    private String descrpcion;
-
     @Column(name = "trd_seleccion")
     @Basic
     private Boolean seleccion;
@@ -72,7 +73,15 @@ public class TablaRetencionDocumental implements Serializable {
         this.id = id;
     }
 
-    public Boolean isSeConserva() {
+    public String getDescripcion() {
+        return this.descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Boolean getSeConserva() {
         return this.seConserva;
     }
 
@@ -80,7 +89,7 @@ public class TablaRetencionDocumental implements Serializable {
         this.seConserva = seConserva;
     }
 
-    public Boolean isEnDigital() {
+    public Boolean getEnDigital() {
         return this.enDigital;
     }
 
@@ -88,7 +97,7 @@ public class TablaRetencionDocumental implements Serializable {
         this.enDigital = enDigital;
     }
 
-    public Boolean isSeElimina() {
+    public Boolean getSeElimina() {
         return this.seElimina;
     }
 
@@ -96,7 +105,7 @@ public class TablaRetencionDocumental implements Serializable {
         this.seElimina = seElimina;
     }
 
-    public Boolean isEnFisico() {
+    public Boolean getEnFisico() {
         return this.enFisico;
     }
 
@@ -104,7 +113,7 @@ public class TablaRetencionDocumental implements Serializable {
         this.enFisico = enFisico;
     }
 
-    public Boolean isEnMicro() {
+    public Boolean getEnMicro() {
         return this.enMicro;
     }
 
@@ -112,15 +121,7 @@ public class TablaRetencionDocumental implements Serializable {
         this.enMicro = enMicro;
     }
 
-    public String getDescrpcion() {
-        return this.descrpcion;
-    }
-
-    public void setDescrpcion(String descrpcion) {
-        this.descrpcion = descrpcion;
-    }
-
-    public Boolean isSeleccion() {
+    public Boolean getSeleccion() {
         return this.seleccion;
     }
 
@@ -143,5 +144,6 @@ public class TablaRetencionDocumental implements Serializable {
     public void setSubSerie(SubSerie subSerie) {
         this.subSerie = subSerie;
     }
+
 
 }

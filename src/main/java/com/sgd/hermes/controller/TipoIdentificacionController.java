@@ -5,8 +5,9 @@
  */
 package com.sgd.hermes.controller;
 
-import com.sgd.hermes.business.TipoIdentificacionFacade;
+
 import com.sgd.hermes.model.TipoIdentificacion;
+import com.sgd.hermes.model.service.facade.TipoIdentificacionFacade;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;

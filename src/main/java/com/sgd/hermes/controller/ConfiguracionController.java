@@ -5,7 +5,8 @@
  */
 package com.sgd.hermes.controller;
 
-import com.sgd.hermes.business.ConfiguracionFacade;
+
+import com.sgd.hermes.service.ConfiguracionService;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,30 +15,28 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.Part;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
 @Named(value = "configuracionController")
 @SessionScoped
 public class ConfiguracionController implements Serializable {
     
     @Inject
-    ConfiguracionFacade configuracion;
-
-    private Part divipola;
+    ConfiguracionService configuracion;
 
     public ConfiguracionController() {
     }
 
-    public Part getDivipola() {
-        return divipola;
-    }
 
-    public void setDivipola(Part divipola) {
-        this.divipola = divipola;
-    }
-
-    public void cargarDivipola() {       
-        configuracion.cargarDivipola(divipola);
-    }
-
+    public void handleFileUpload(FileUploadEvent event) {
+        UploadedFile file = event.getFile();        
+        
+        if(file.getContents().length != 0){
+                configuracion.cargarDivipola(file);
+            }
+        }
+    
+    
+    
 }

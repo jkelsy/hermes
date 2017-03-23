@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <p:commandButton action="#{departamentoController.crear}" value="Nuevo" />
+                    <p:dataTable var="tipoIndetificacionInstance" value="#{departamentoController.departamentos}">
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Codigo" />
+                            </f:facet>
+                            <h:outputText value="#{tipoIndetificacionInstance.codigo}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nombre" />
+                            </f:facet>
+                            <h:outputText value="#{tipoIndetificacionInstance.nombre}" />
+                        </p:column>            
+
+                        <p:column>
+                            <h:panelGroup class="action" >
+
+
+                                <h:commandLink action="#{departamentoController.editar(tipoIndetificacionInstance)}" value="Editar"/>
+
+
+                            </h:panelGroup>
+
+                        </p:column>            
+
+                    </p:dataTable>
+                </h:form>    
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

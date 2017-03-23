@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h3>Editar</h3>
+
+                <h:form>
+                    <p:messages id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="false" showDetail="true"/>
+                    <h:panelGrid columns="2">
+
+                        <p:outputLabel for="selectEmpresa" value="Empresa"></p:outputLabel>
+                        <p:selectOneMenu  id="selectEmpresa" filter="true" filterMatchMode="contains" 
+                                          value="#{trdController.empresaSelId}">
+                            <f:selectItem itemLabel="Seleccione empresa" itemValue="#{null}"/>
+                            <p:ajax listener="#{trdController.actualizarCentroCostoPorEmpresa()}" update="selectCentroCosto"  />
+                            <f:selectItems  value="#{trdController.empresaList}" var="empresaInstance"
+                                            itemLabel="#{empresaInstance.nit} | #{empresaInstance.nombre}" itemValue="#{empresaInstance.id}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel for="selectCentroCosto" value="Centro Costo"></p:outputLabel>
+
+
+                        <p:selectOneMenu  id="selectCentroCosto" filter="true" filterMatchMode="contains" value="#{trdController.centroCostoSelId}">
+                            <f:selectItem itemLabel="Seleccione Centro de Costo" itemValue="#{null}"/>
+                            <f:selectItems  value="#{trdController.centroCostoList}" var="centroCostoInstance"
+                                            itemLabel="#{centroCostoInstance.codigo} | #{centroCostoInstance.nombre}" itemValue="#{centroCostoInstance.id}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel for="selectSerie" value="Serie"></p:outputLabel>
+                        <p:selectOneMenu  id="selectSerie" filter="true" filterMatchMode="contains" value="#{trdController.serieSelId}">
+
+                            <p:ajax listener="#{trdController.actualizarSubserie()}" update="selectSubSerie" />
+                            <f:selectItem itemLabel="Seleccione Serie" itemValue="#{null}"/>
+                            <f:selectItems value="#{trdController.serieList}" var="serieInstance"
+                                           itemLabel="#{serieInstance.codigo} | #{serieInstance.descripcion}" itemValue="#{serieInstance.id}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel for="selectSubSerie" value="Sub Serie"></p:outputLabel>
+                        <p:selectOneMenu  id="selectSubSerie" filter="true" filterMatchMode="contains" value="#{trdController.subSerieSelId}">
+                            <f:selectItem itemLabel="Seleccione Sub Serie" itemValue="#{null}"/>
+                            <f:selectItems value="#{trdController.subSerieList}" var="serieInstance"
+                                           itemLabel="#{serieInstance.codigo} | #{serieInstance.descripcion}" itemValue="#{serieInstance.id}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel for="txtDescripcion" value="Descripcion"></p:outputLabel>
+                        <p:inputText id="txtDescripcion" value="#{trdController.trdSeleccionada.descripcion}"></p:inputText>
+
+                        <p:outputLabel for="checkSeConserva" value="Se Conserva?"></p:outputLabel>
+                        <p:selectBooleanCheckbox id="checkSeConserva" value="#{trdController.trdSeleccionada.seConserva}" />
+
+                        <p:outputLabel for="checkEnDigital" value="En Digital?"></p:outputLabel>
+                        <p:selectBooleanCheckbox id="checkEnDigital" value="#{trdController.trdSeleccionada.enDigital}" />
+
+                        <p:outputLabel for="checkSeElimina" value="Se Elimina?"></p:outputLabel>
+                        <p:selectBooleanCheckbox id="checkSeElimina" value="#{trdController.trdSeleccionada.seElimina}" />
+
+                        <p:outputLabel for="checkEnFisico" value="En Fisico?"></p:outputLabel>
+                        <p:selectBooleanCheckbox id="checkEnFisico" value="#{trdController.trdSeleccionada.enFisico}" />
+
+                        <p:outputLabel for="checkEnMicro" value="En Micro?"></p:outputLabel>
+                        <p:selectBooleanCheckbox id="checkEnMicro" value="#{trdController.trdSeleccionada.enMicro}" />
+
+                        <p:outputLabel for="checkSeleccion" value="Seleccion?"></p:outputLabel>
+                        <p:selectBooleanCheckbox id="checkSeleccion" value="#{trdController.trdSeleccionada.seleccion}" />
+
+                        <p:commandButton icon="ui-icon-check" rendered="#{(trdController.labelAccionTrd =='Actualizar')}"
+                                         value="#{trdController.labelAccionTrd}"
+                                         actionListener="#{trdController.grabar}"
+                                         update="mensaje" action="editar"
+                                         />
+
+                        <p:commandButton icon="ui-icon-check" rendered="#{(trdController.labelAccionTrd =='Grabar')}"
+                                         value="#{trdController.labelAccionTrd}"
+                                         actionListener="#{trdController.grabar}"
+                                         update="mensaje" action="crear"
+                                         />
+
+                    </h:panelGrid>
+                </h:form> 
+</html>

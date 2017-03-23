@@ -1,7 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="HermesPU" transaction-type="JTA">
-    <jta-data-source>java:/jboss/datasources/HermesDS</jta-data-source>  
+    <jta-data-source>java:/jboss/datasources/HermesDS</jta-data-source>
+    <class>com.sgd.hermes.model.TipoArmario</class>
+    <class>com.sgd.hermes.model.Municipio</class>
+    <class>com.sgd.hermes.model.Poblado</class>
+    <class>com.sgd.hermes.model.TipoPreservacion</class>
+    <class>com.sgd.hermes.model.TipoDocumental</class>
+    <class>com.sgd.hermes.model.SubSerie</class>
+    <class>com.sgd.hermes.model.TablaRetencionDocumental</class>
+    <class>com.sgd.hermes.model.CentroCosto</class>
+    <class>com.sgd.hermes.model.TRDTipoDocumental</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>

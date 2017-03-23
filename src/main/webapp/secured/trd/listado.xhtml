@@ -8,9 +8,16 @@
 
     <body>
 
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewAction action="#{trdController.onListado}"  />
+            </f:metadata>
+
+        </ui:define>
+
         <ui:composition template="/plantilla.xhtml">
             <ui:define name="contentHeader">
-                
+
                 <h1>
                     <small>Tabla de Retención Documental</small>
                 </h1>
@@ -21,26 +28,114 @@
             </ui:define>
             <ui:define name="content">
                 <h:form>
-                    <p:selectOneMenu  id="selectEmpresa" filter="true" filterMatchMode="contains" value="#{trdController.empresaId}">
-                        
-                        <p:ajax listener="#{trdController.actualizarTRDPorEmpresa()}" update="tablaTRD"  />
-                        <f:selectItems  value="#{trdController.empresas}" var="emp"
-                                        itemLabel="#{emp.nombre}" itemValue="#{emp.id}"/>
-                    </p:selectOneMenu>
-                                  
-                    <p:dataTable var="trd" value="#{trdController.trds}" id="tablaTRD">
+
+                    <p:commandButton title="Nueva TRD" value="Nueva"
+                                     action="crear?faces-redirect=true"
+                                     icon="fa fa-plus" />
+
+                    <p:panel>
+                        <p:selectOneMenu  id="selectEmpresa" value="#{trdController.empresaSelId}" >
+                            <p:ajax listener="#{trdController.actualizarCentroCostoPorEmpresa()}" update="selectCentroCosto tablaTRD"  />
+
+                            <f:selectItems  value="#{trdController.empresaList}" var="empresaInstance"
+                                            itemLabel="#{empresaInstance.nombre}" itemValue="#{empresaInstance.id}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:selectOneMenu  id="selectCentroCosto" value="#{trdController.centroCostoSelId}" >
+                            <p:ajax listener="#{trdController.actualizarTRDPorEmpresa()}" update="tablaTRD"  />
+
+                            <f:selectItems  value="#{trdController.centroCostoList}" var="centroCostoInstance"
+                                            itemLabel="#{centroCostoInstance.nombre}" itemValue="#{centroCostoInstance.id}"/>
+                        </p:selectOneMenu>
+                    </p:panel>
+
+
+                    <p:dataTable var="trdInstance" paginator="true" rows="15" value="#{trdController.trdList}" id="tablaTRD">
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Nit" />
+                                <h:outputText value="Id" />
                             </f:facet>
-                            <h:outputText value="#{trd.descrpcion}" />
+                            <h:outputText value="#{trdInstance.id}" />
                         </p:column>
 
-                                
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Centro Costo" />
+                            </f:facet>
+                            <h:outputText value="#{trdInstance.centroCosto.codigo}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Descripcion" />
+                            </f:facet>
+                            <h:outputText value="#{trdInstance.descripcion}" />
+                        </p:column>
+
+                        <p:column style="width: 6em; text-align: center;">
+                            <f:facet name="header">
+                                <h:outputText value="Conserva" />
+                            </f:facet>
+                            <span   class="#{trdInstance.seConserva?'fa fa-check':'fa fa-close'}" />
+                        </p:column>
+
+                        <p:column style="width: 6em; text-align: center;">
+                            <f:facet name="header">
+                                <h:outputText value="Elimina" />
+                            </f:facet>
+                            <span class="#{trdInstance.seElimina?'fa fa-check':'fa fa-close'}" />
+
+                        </p:column>
+
+                        <p:column style="width: 6em; text-align: center;">
+                            <f:facet name="header">
+                                <h:outputText value="Digital" />
+                            </f:facet>
+                            <span class="#{trdInstance.enDigital?'fa fa-check':'fa fa-close'}" />
+                        </p:column>
+
+                        <p:column style="width: 6em; text-align: center;">
+                            <f:facet name="header">
+                                <h:outputText value="Fisico" />
+                            </f:facet>
+                            <span class="#{trdInstance.enFisico?'fa fa-check':'fa fa-close'}" />
+                        </p:column>
+
+                        <p:column style="width: 6em; text-align: center;">
+                            <f:facet name="header">
+                                <h:outputText value="Micro" />
+                            </f:facet>
+                            <span class="#{trdInstance.enMicro?'fa fa-check':'fa fa-close'}" />
+                        </p:column>
+
+                        <p:column style="width: 6em; text-align: center;">
+                            <f:facet name="header">
+                                <h:outputText value="Seleccion" />
+                            </f:facet>
+                            <span class="#{trdInstance.seleccion?'fa fa-check':'fa fa-close'}" />
+                        </p:column>
+                        <p:column style="width: 7em; text-align: center;">
+
+
+                            <p:commandButton title="Editar" 
+                                             icon="fa fa-edit" 
+                                             action="#{'editar?faces-redirect=true&amp;id='.concat(trdInstance.id)}"  />
+
+
+                            <p:commandButton title="Mostrar" 
+                                             action="#{'mostrar?faces-redirect=true&amp;id='.concat(trdInstance.id)}"
+                                             icon="fa fa-eye" />
+                        </p:column>
+
 
                     </p:dataTable>
-                </h:form>    
+
+
+
+                </h:form>
+
             </ui:define>
 
         </ui:composition>
